@@ -18,7 +18,7 @@ public class Dashboard extends AppCompatActivity {
         String str[] = {
                 "Dashboard","Saikat","Dhaval","Abhishek"
         };
-        recyclerView = findViewById(R.id.recylerview);
+        recyclerView = findViewById(R.id.recyclerview);
 
         DashboardAdapter adapter=new DashboardAdapter(str,Dashboard.this);
         recyclerView.setLayoutManager(new GridLayoutManager(Dashboard.this,2));
