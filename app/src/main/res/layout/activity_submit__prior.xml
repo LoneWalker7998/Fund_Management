@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Submit_Prior"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/prior_request"
+        android:textColor="#CA144D"
+        android:textSize="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:gravity="center"
+
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/prior_rules"
+        android:textColor="@color/black"
+        android:padding="@dimen/_25sdp"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_55sdp"
+        android:textSize="@dimen/_25sdp"
+        android:background="@drawable/box_shape"
+        android:layout_marginLeft="@dimen/_35sdp"
+        android:layout_marginRight="@dimen/_35sdp"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/send_request"
+        android:textAllCaps="false"
+        android:layout_marginLeft="@dimen/_60sdp"
+        android:layout_marginRight="@dimen/_60sdp"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:background="@drawable/button"
+        android:id="@+id/send_request"
+        />
+
+</LinearLayout>

@@ -17,8 +17,6 @@
         android:textAlignment="center"
         android:textColor="#009688"
         android:textStyle="bold"
-
-
         />
 
     <EditText
@@ -50,13 +48,11 @@
         android:layout_height="@dimen/_40sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:hint="Enter you address"
-
         android:textColorHint="@color/black"
         android:background="@drawable/box_shape"
         android:padding="@dimen/_5sdp"
         android:layout_marginLeft="@dimen/_10sdp"
         android:layout_marginRight="@dimen/_10sdp"
-
         />
 
     <EditText
@@ -85,7 +81,6 @@
         android:layout_marginLeft="@dimen/_10sdp"
         android:layout_marginRight="@dimen/_10sdp"
         android:inputType="textPassword"
-
         />
 
     <EditText
@@ -93,14 +88,12 @@
         android:layout_height="@dimen/_40sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:hint="Re-enter Password"
-
         android:textColorHint="@color/black"
         android:background="@drawable/box_shape"
         android:padding="@dimen/_5sdp"
         android:layout_marginLeft="@dimen/_10sdp"
         android:layout_marginRight="@dimen/_10sdp"
         android:inputType="textPassword"
-
         />
 
     <Button
@@ -111,6 +104,5 @@
         android:layout_marginRight="@dimen/_60sdp"
         android:layout_marginTop="@dimen/_30sdp"
         android:background="@drawable/button"
-
         />
 </LinearLayout>

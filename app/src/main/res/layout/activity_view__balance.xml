@@ -19,7 +19,6 @@
             android:layout_height="@dimen/_200sdp"
             android:padding="@dimen/inner_frame_layout_padding"
             android:background="#C8D89F"
-            android:boxedEdges="all"
             android:orientation="vertical"
             android:paddingBottom="@dimen/_10sdp">
     <LinearLayout

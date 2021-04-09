@@ -9,8 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FundManagement">
-        <activity android:name=".Edit_Profile"></activity>
-        <activity android:name=".Dashboard" />
+        <activity android:name=".Dashboard"></activity>
         <activity android:name=".SignUp" />
         <activity android:name=".Login">
             <intent-filter>
