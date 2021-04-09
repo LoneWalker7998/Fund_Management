@@ -10,21 +10,38 @@ import com.fundmanagement.Adapters.DashboardAdapter;
 
 public class Dashboard extends AppCompatActivity {
     RecyclerView recyclerView;
-    String str[];
-
-
+    String[] str;
+    String role;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        String str[] = {
-                "Dashboard","Saikat","Dhaval","Abhishek"
-        };
+
+        role  = getIntent().getStringExtra("role");
         recyclerView = findViewById(R.id.recyclerview);
+        if(role.equals("guide"))
+            dummydata();
+        else if(role.equals("student"))
+            studentdata();
+        else if(role.equals("hod"))
+            hoddata();
+
 
         DashboardAdapter adapter=new DashboardAdapter(str,Dashboard.this);
         recyclerView.setLayoutManager(new GridLayoutManager(Dashboard.this,2));
         recyclerView.setAdapter(adapter);
+    }
+
+    private void hoddata() {
+        str = new String[]{"Prior Request", "Fund Request","Request History"};
+    }
+
+    private void studentdata() {
+        str = new String[]{"Prior Request", "View Balance","Status","Manage Profile"};
+    }
+
+    private void dummydata() {
+        str = new String[]{"Prior Request", "Document Verification","Verified Documents","Status"};
     }
 
 }

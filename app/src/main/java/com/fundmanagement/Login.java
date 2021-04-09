@@ -6,12 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.fundmanagement.Student.Prior_Request;
 
 public class Login extends AppCompatActivity {
     Button btn;
-
+    TextView already_account;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,10 +21,20 @@ public class Login extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(Login.this, Prior_Request.class);
+                Intent it = new Intent(Login.this, Dashboard.class);
+                it.putExtra("role","hod");
                 startActivity(it);
+                finish();
             }
         });
-
+        already_account = findViewById(R.id.already_account);
+        already_account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(Login.this,SignUp.class);
+                startActivity(it);
+                finish();
+            }
+        });
     }
 }

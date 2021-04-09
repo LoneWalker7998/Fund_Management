@@ -11,6 +11,14 @@
         android:theme="@style/Theme.FundManagement">
         <activity android:name=".Dashboard"></activity>
         <activity android:name=".SignUp" />
+        <activity android:name=".Student.Edit_Profile"/>
+        <activity android:name=".Student.Prior_Request"/>
+        <activity android:name=".Student.Submit_Prior"/>
+        <activity android:name=".Student.View_Balance"/>
+        <activity android:name=".Student.Add_Bill"/>
+        <activity android:name=".Student.View_Profile"/>
+
+        <activity android:name=".HOD.HOD_Prior"/>
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

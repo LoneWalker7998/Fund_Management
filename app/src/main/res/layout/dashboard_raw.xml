@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/_8sdp">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="@dimen/_150sdp"
@@ -14,16 +15,16 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_150sdp"
         android:orientation="vertical"
-        android:background="#BDEAA1">
+        android:background="#BDEAA1"
+        android:layout_gravity="center">
        <TextView
            android:layout_width="match_parent"
-           android:layout_height="wrap_content"
+           android:layout_height="match_parent"
            android:text="Dashboard"
-           android:textSize="@dimen/_20sdp"
+           android:textSize="@dimen/_15sdp"
            android:gravity="center"
+           android:textStyle="bold"
            android:id="@+id/cardtext"/>
-
-
 
     </LinearLayout>
     </androidx.cardview.widget.CardView>

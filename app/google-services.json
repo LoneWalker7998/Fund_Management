@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "874926648803",
+    "project_id": "fund-management-2e04a",
+    "storage_bucket": "fund-management-2e04a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:874926648803:android:b437179f5e5851935644d6",
+        "android_client_info": {
+          "package_name": "com.fundmanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "874926648803-rsa288lgtn94na7p5hbc6agfgronmitn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHqdkfLNLDpcH-IknCMRtzig5-PYEdyEc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "874926648803-rsa288lgtn94na7p5hbc6agfgronmitn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
