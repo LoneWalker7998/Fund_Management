@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.fundmanagement.Student.Prior_Request;
+
 public class Login extends AppCompatActivity {
     Button btn;
 
@@ -18,7 +20,7 @@ public class Login extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(Login.this,Prior_Request.class);
+                Intent it = new Intent(Login.this, Prior_Request.class);
                 startActivity(it);
             }
         });

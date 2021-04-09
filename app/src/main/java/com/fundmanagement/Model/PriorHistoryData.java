@@ -1,12 +1,12 @@
-package com.fundmanagement;
+package com.fundmanagement.Model;
 
 import java.io.Serializable;
 
-public class PriorHistory implements Serializable {
+public class PriorHistoryData implements Serializable {
     String requestNo="";
     String priorStatus="";
 
-    public PriorHistory(String requestNo, String priorStatus) {
+    public PriorHistoryData(String requestNo, String priorStatus) {
         this.requestNo = requestNo;
         this.priorStatus = priorStatus;
     }

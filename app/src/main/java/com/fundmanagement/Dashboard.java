@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.fundmanagement.Adapters.DashboardAdapter;
+
 public class Dashboard extends AppCompatActivity {
     RecyclerView recyclerView;
     String str[];

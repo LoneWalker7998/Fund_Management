@@ -1,8 +1,10 @@
-package com.fundmanagement;
+package com.fundmanagement.HOD;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.fundmanagement.R;
 
 public class HOD_Prior extends AppCompatActivity {
 
