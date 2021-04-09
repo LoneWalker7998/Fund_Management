@@ -2,18 +2,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_10sdp"
+        android:padding="@dimen/_8sdp"
+        android:id="@+id/line"
         android:orientation="horizontal">
 
 
         <ImageView
-            android:layout_width="@dimen/_30sdp"
-            android:layout_height="@dimen/_30sdp"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
             android:src="@drawable/ic_arrow_back"
             android:layout_alignParentLeft="true"
             />
@@ -22,7 +23,7 @@
             android:layout_weight="1"
             android:layout_width="@dimen/_1sdp"
             android:layout_height="wrap_content"
-            android:text="Your Profile"
+            android:text="Manage Profile"
             android:textSize="@dimen/_16sdp"
             android:textStyle="bold"
             android:gravity="center"
@@ -35,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Logout"
-            android:textColor="#CB4AE4"
+            android:textColor="@color/blue"
             android:layout_alignParentRight="true"
             android:textStyle="normal"
             android:textSize="@dimen/_15sdp"
@@ -44,5 +45,14 @@
             />
 
     </LinearLayout>
+
+    <view
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background = "@color/black"
+        android:layout_below="@+id/line"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:layout_marginRight="@dimen/_8sdp"
+        />
 
 </RelativeLayout>

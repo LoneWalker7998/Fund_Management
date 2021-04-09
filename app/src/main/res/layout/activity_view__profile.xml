@@ -1,11 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".View_Profile">
 
     <include layout="@layout/toolbar"/>
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/_15sdp"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="@dimen/_110sdp"
+            android:layout_height="@dimen/_110sdp"
+            android:src="@drawable/profile_user"
+            android:layout_gravity="center"
+
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Saikat Barua"
+            android:layout_gravity="center"
+
+            android:textColor="#C31C99"
+            android:textSize="@dimen/_22sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:textStyle="bold"
+            />
+
+        <view
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_2sdp"
+            android:background = "@color/black"
+            android:layout_below="@+id/line"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:layout_marginRight="@dimen/_8sdp"
+
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/_15sdp"
+        android:paddingRight="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_gravity="center_vertical"
+        >
+
+        <ImageView
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:src="@drawable/ic_email"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20sdp"
+            android:layout_marginLeft="@dimen/_8sdp"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="skb@gmail.com"
+            android:textStyle="bold"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/_18sdp"
+            android:layout_marginLeft="@dimen/_35sdp"
+
+            />
+
+
+    </LinearLayout>
+
+    <view
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background = "@color/black"
+        android:layout_below="@+id/line"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginLeft="@dimen/_17sdp"
+        android:layout_marginRight="@dimen/_17sdp"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/_15sdp"
+        android:paddingRight="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_gravity="center_vertical"
+        >
+
+        <ImageView
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:src="@drawable/ic_phone"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20sdp"
+            android:layout_marginLeft="@dimen/_8sdp"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9988776655"
+            android:textStyle="bold"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/_18sdp"
+            android:layout_marginLeft="@dimen/_28sdp"
+
+            />
+
+
+    </LinearLayout>
+    <view
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background = "@color/black"
+        android:layout_below="@+id/line"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginLeft="@dimen/_17sdp"
+        android:layout_marginRight="@dimen/_17sdp"
+
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/_15sdp"
+        android:paddingRight="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_gravity="center_vertical"
+        >
+
+        <ImageView
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:src="@drawable/ic_location"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20sdp"
+            android:layout_marginLeft="@dimen/_8sdp"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kooch Bihar, Bengal"
+            android:textStyle="bold"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/_18sdp"
+            android:layout_marginLeft="@dimen/_12sdp"
+
+            />
+
+
+    </LinearLayout>
+    <view
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background = "@color/black"
+        android:layout_below="@+id/line"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginLeft="@dimen/_17sdp"
+        android:layout_marginRight="@dimen/_17sdp"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:background="@drawable/bg_btn"
+            android:text="Edit Profile"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/_18sdp"
+            android:drawableLeft="@drawable/ic_edit"
+            android:paddingLeft="@dimen/_15sdp"
+
+
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
