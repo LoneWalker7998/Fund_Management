@@ -45,7 +45,7 @@ public class SignUp extends AppCompatActivity {
         signup = findViewById(R.id.singup_button);
         firebaseAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-
+        relativeLayout = findViewById(R.id.progress_bar);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,6 +58,7 @@ public class SignUp extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 validateData(email);
                 validateData(name);
                 validateData(phone);
@@ -94,6 +95,7 @@ public class SignUp extends AppCompatActivity {
                     }
                 }
                 if(isDataValid){
+                    relativeLayout.setVisibility(View.VISIBLE);
                     Toast.makeText(SignUp.this, "Data is verified", Toast.LENGTH_SHORT).show();
                     firebaseAuth.createUserWithEmailAndPassword(email.getText().toString().trim(),password.getText().toString().trim())
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -104,6 +106,7 @@ public class SignUp extends AppCompatActivity {
                                 firebaseUser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
+
                                         Toast.makeText(SignUp.this, "Verify Your Email", Toast.LENGTH_SHORT).show();
                                     }
                                 });
@@ -136,6 +139,7 @@ public class SignUp extends AppCompatActivity {
                             }else{
                                 Toast.makeText(SignUp.this, "Error "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
+                            relativeLayout.setVisibility(View.GONE);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
