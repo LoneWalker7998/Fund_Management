@@ -128,28 +128,28 @@
                 android:background="@drawable/button"
                 android:textAllCaps="false"
                 />
-           <TextView
-               android:id="@+id/already_account"
-               android:layout_below="@id/singup_button"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:textSize="@dimen/_13sdp"
-               android:text="Already Have An Account ?"
-               android:textColor="@color/black"
-               android:gravity="center"
-               android:layout_marginTop="@dimen/_5sdp"/>
-                <Button
-                    android:layout_below="@id/already_account"
-                    android:id="@+id/login_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/button"
-                    android:layout_marginLeft="@dimen/_30sdp"
-                    android:layout_marginRight="@dimen/_30sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:text="Login"
-                    android:textSize="@dimen/_12sdp"
-                    android:textAllCaps="false"/>
+            <TextView
+                android:id="@+id/already_account"
+                android:layout_below="@id/singup_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_13sdp"
+                android:text="Already Have An Account ?"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/_5sdp"/>
+            <Button
+                android:layout_below="@id/already_account"
+                android:id="@+id/login_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginRight="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="Login"
+                android:textSize="@dimen/_12sdp"
+                android:textAllCaps="false"/>
 
 
         </RelativeLayout>

@@ -7,4 +7,6 @@
     <string name="prior_request_no">Prior Request No:</string>
     <string name="status">Status</string>
     <string name="all_prior_requests">All Prior Requests</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

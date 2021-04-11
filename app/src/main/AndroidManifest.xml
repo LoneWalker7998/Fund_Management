@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FundManagement">
         <activity android:name=".Dashboard"></activity>
-        <activity android:name=".SignUp" />
         <activity android:name=".Student.Edit_Profile"/>
         <activity android:name=".Student.Prior_Request"/>
         <activity android:name=".Student.Submit_Prior"/>
