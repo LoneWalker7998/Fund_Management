@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,12 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:isScrollContainer="true">
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center">
             <TextView
+                android:id="@+id/signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="SignUp"
@@ -28,6 +29,8 @@
                 />
 
             <EditText
+                android:layout_below="@id/signup"
+                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_20sdp"
@@ -40,6 +43,8 @@
                 />
 
             <EditText
+                android:layout_below="@id/email"
+                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_18sdp"
@@ -52,6 +57,8 @@
                 />
 
             <EditText
+                android:layout_below="@id/name"
+                android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_18sdp"
@@ -64,6 +71,8 @@
                 />
 
             <EditText
+                android:layout_below="@id/address"
+                android:id="@+id/phone"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_18sdp"
@@ -78,11 +87,12 @@
                 />
 
             <EditText
+                android:layout_below="@id/phone"
+                android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_18sdp"
                 android:hint="Enter Password"
-
                 android:textColorHint="@color/black"
                 android:background="@drawable/box_shape"
                 android:padding="@dimen/_5sdp"
@@ -92,6 +102,8 @@
                 />
 
             <EditText
+                android:layout_below="@id/password"
+                android:id="@+id/confirm_password"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_18sdp"
@@ -105,44 +117,44 @@
                 />
 
             <Button
+                android:layout_below="@id/confirm_password"
+                android:id="@+id/singup_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Submit"
+                android:text="SignUp"
                 android:layout_marginLeft="@dimen/_60sdp"
                 android:layout_marginRight="@dimen/_60sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:background="@drawable/button"
                 android:textAllCaps="false"
                 />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:weightSum="2">
+           <TextView
+               android:id="@+id/already_account"
+               android:layout_below="@id/singup_button"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:textSize="@dimen/_13sdp"
+               android:text="Already Have An Account ?"
+               android:textColor="@color/black"
+               android:gravity="center"
+               android:layout_marginTop="@dimen/_5sdp"/>
                 <Button
-                    android:layout_width="0dp"
+                    android:layout_below="@id/already_account"
+                    android:id="@+id/login_button"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.9"
                     android:background="@drawable/button"
-                    android:layout_marginLeft="@dimen/_12sdp"
-                    android:layout_marginRight="@dimen/_12sdp"
+                    android:layout_marginLeft="@dimen/_30sdp"
+                    android:layout_marginRight="@dimen/_30sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:text="Login"
                     android:textSize="@dimen/_12sdp"
                     android:textAllCaps="false"/>
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.1"
-                    android:background="@drawable/button"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:text="Forgot Password"
-                    android:textSize="@dimen/_12sdp"
-                    android:textAllCaps="false"/>
-            </LinearLayout>
 
-        </LinearLayout>
+
+        </RelativeLayout>
 
     </androidx.core.widget.NestedScrollView>
+    <include layout="@layout/progress_bar_layout"/>
 
-</LinearLayout>
+</RelativeLayout>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,26 +12,27 @@
 <androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:isScrollContainer="true"/>
-    <LinearLayout
+    android:isScrollContainer="true">
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center">
         <TextView
+            android:id="@+id/text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LogIn"
-
             android:textSize="50dp"
-            android:layout_marginTop="@dimen/_100sdp"
+            android:layout_marginTop="@dimen/_70sdp"
             android:textAlignment="center"
             android:textColor="#009688"
             android:textStyle="bold"
-
             />
 
         <EditText
+            android:layout_below="@+id/text"
+            android:id="@+id/login_email"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
             android:layout_marginTop="@dimen/_50sdp"
@@ -44,6 +45,8 @@
             />
 
         <EditText
+            android:layout_below="@id/login_email"
+            android:id="@+id/login_password"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
             android:layout_marginTop="@dimen/_50sdp"
@@ -56,32 +59,60 @@
             android:inputType="textPassword"
             />
         <Button
+            android:layout_below="@id/login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Submit"
+            android:text="Login"
             android:layout_marginLeft="@dimen/_60sdp"
             android:layout_marginRight="@dimen/_60sdp"
             android:layout_marginTop="@dimen/_40sdp"
             android:background="@drawable/button"
+            android:textSize="@dimen/_15sdp"
             android:id="@+id/loginsubmit"
-
+            android:textAllCaps="false"
             />
 
         <Button
-            android:id="@+id/already_account"
+            android:layout_below="@id/loginsubmit"
+            android:id="@+id/singuppage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Already have an account ?"
+            android:text="Signup"
             android:gravity="center"
-            android:layout_marginTop="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_18sdp"
             android:textSize="@dimen/_15sdp"
-            android:textColor="@color/white"
             android:textStyle="bold"
             android:textAllCaps="false"
-            android:layout_marginLeft="@dimen/_15sdp"
-            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginLeft="@dimen/_50sdp"
+            android:layout_marginRight="@dimen/_50sdp"
             android:background="@drawable/button" />
-    </LinearLayout>
+        <Button
+            android:layout_below="@id/singuppage"
+            android:id="@+id/forgot_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_40sdp"
+            android:layout_marginRight="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:background="@drawable/button"
+            android:textSize="@dimen/_15sdp"
+            android:textAllCaps="false"
+            android:text="Forggot Password ?"/>
+        <Button
+            android:layout_below="@id/forgot_password"
+            android:id="@+id/verify_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:visibility="gone"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginRight="@dimen/_30sdp"
+            android:text="Verify Email"
+            android:textSize="@dimen/_15sdp"/>
 
-
-</LinearLayout>
+    </RelativeLayout>
+</androidx.core.widget.NestedScrollView>
+   <include layout="@layout/progress_bar_layout"/>
+</RelativeLayout>
