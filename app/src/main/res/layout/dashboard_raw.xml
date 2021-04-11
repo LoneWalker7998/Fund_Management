@@ -3,14 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="@dimen/_8sdp"
-    android:layout_margin="@dimen/_5sdp">
+    android:padding="@dimen/_8sdp">
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview_dashboard"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_110sdp"
         app:cardCornerRadius="@dimen/_10sdp"
-        android:padding="@dimen/_10sdp"
+        android:padding="@dimen/_8sdp"
         android:layout_marginTop="@dimen/_30sdp"
         >
     <LinearLayout
@@ -20,16 +19,28 @@
         android:layout_gravity="center"
         >
        <TextView
-           android:layout_width="wrap_content"
+           android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:text="Dashboard"
-           android:textSize="@dimen/_15sdp"
-           android:gravity="center"
+           android:textSize="@dimen/_11sdp"
            android:textStyle="bold"
-           android:layout_marginTop="@dimen/_50sdp"
-           android:layout_marginLeft="@dimen/_10sdp"
-           android:id="@+id/cardtext"
+           android:textAllCaps="true"
+           android:layout_marginTop="@dimen/_40sdp"
+           android:layout_marginLeft="@dimen/_8sdp"
+           android:id="@+id/main_text"
+           android:layout_gravity="start"
            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/sub_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#656565"
+            android:text="something"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:textSize="@dimen/_9sdp"
+            android:layout_gravity="left"/>
+
 
     </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -45,6 +56,7 @@
             android:background="#38CA47"
             android:padding="@dimen/_8sdp">
             <ImageView
+                android:id="@+id/card_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_fund_req"/>

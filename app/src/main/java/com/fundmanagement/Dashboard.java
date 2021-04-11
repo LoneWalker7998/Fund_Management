@@ -10,13 +10,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.fundmanagement.Adapters.DashboardAdapter;
+import com.fundmanagement.Model.DashboardData;
 import com.fundmanagement.Student.Prior_Request;
 import com.fundmanagement.Student.View_Balance;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyItemOnClickListener {
     RecyclerView recyclerView;
@@ -24,6 +26,7 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
     String role;
     ImageView logout;
     FirebaseAuth firebaseAuth;
+    List itemlist = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +42,7 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
             studentdata();
         else if(role.equals("hod"))
             hoddata();
-        DashboardAdapter adapter=new DashboardAdapter(str,getApplicationContext(),Dashboard.this);
+        DashboardAdapter adapter=new DashboardAdapter(itemlist,getApplicationContext(),Dashboard.this);
         recyclerView.setLayoutManager(new GridLayoutManager(Dashboard.this,2));
         recyclerView.setAdapter(adapter);
         logout.setOnClickListener(new View.OnClickListener() {
@@ -59,14 +62,42 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
 
     private void hoddata() {
         str = new String[]{"Prior Request", "Fund Request","Request History"};
+        DashboardData data = new DashboardData("Prior Request","Verify, Approve, Reject Requests",R.drawable.ic_prior_request);
+        itemlist.add(data);
+
+        DashboardData data1 = new DashboardData("Fund Request","Verify, Approve, Reject Funds",R.drawable.ic_fund_req);
+        itemlist.add(data1);
+
+        DashboardData data2 = new DashboardData("Request History","View Fund History",R.drawable.ic_history);
+        itemlist.add(data2);
     }
 
     private void studentdata() {
-        str = new String[]{"Prior Request", "View Balance","Status","Manage Profile"};
+        str = new String[]{"Prior Request","Status","Manage Profile"};
+        DashboardData data = new DashboardData("Prior Request","Send, View Requests",R.drawable.ic_prior_request);
+        itemlist.add(data);
+
+        DashboardData data1 = new DashboardData("Status","View Request Status",R.drawable.ic_status);
+        itemlist.add(data1);
+
+        DashboardData data2 = new DashboardData("Manage Profile","View, Update Profile",R.drawable.ic_profile);
+        itemlist.add(data2);
     }
 
     private void dummydata() {
-        str = new String[]{"Prior Request", "Document Verification","Verified Documents","Status"};
+        str = new String[]{"Prior Request", "Document Verification","Verified Requests","Status"};
+        DashboardData data = new DashboardData("Prior Request","Verify, Approve, Reject Requests",R.drawable.ic_prior_request);
+        itemlist.add(data);
+
+        DashboardData data1 = new DashboardData("Document Verification","View, Verify Documents",R.drawable.ic_document_verification);
+        itemlist.add(data1);
+
+        DashboardData data2 = new DashboardData("Verified Requests","View Requests",R.drawable.ic_verified);
+        itemlist.add(data2);
+
+        DashboardData data3 = new DashboardData("Status","View Request Status",R.drawable.ic_status);
+        itemlist.add(data3);
+
     }
 
     @Override
