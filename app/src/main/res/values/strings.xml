@@ -4,7 +4,7 @@
     <string name="prior_request">Prior Request</string>
     <string name="prior_rules">Read all Rules and Regulation Carefully before applying for Fund Request</string>
     <string name="send_request">Send Request</string>
-    <string name="prior_request_no">Prior Request No:</string>
+    <string name="prior_request_no">Prior Request No: </string>
     <string name="status">Status</string>
     <string name="all_prior_requests">All Prior Requests</string>
     <!-- TODO: Remove or change this placeholder text -->

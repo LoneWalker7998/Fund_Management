@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -59,10 +60,26 @@ public class SignUpFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
 
+        return view;
+    }
+    private void validateData(EditText field) {
+        if(field.getText().toString().isEmpty()){
+            isDataValid =false;
+            field.setError("Required Field");
+            return;
+        }else{
+            isDataValid = true;
+        }
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent it = new Intent(getContext(), Login.class);
+                it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |  Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(it);
 
             }
@@ -144,6 +161,7 @@ public class SignUpFragment extends Fragment {
                                             }
                                         });
                                         Intent it = new Intent(getContext(),Login.class);
+                                        it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |  Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(it);
 
                                     }else{
@@ -159,16 +177,5 @@ public class SignUpFragment extends Fragment {
                 }
             }
         });
-
-        return view;
-    }
-    private void validateData(EditText field) {
-        if(field.getText().toString().isEmpty()){
-            isDataValid =false;
-            field.setError("Required Field");
-            return;
-        }else{
-            isDataValid = true;
-        }
     }
 }

@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
@@ -40,12 +41,12 @@ public class LoginFragment extends Fragment {
     Button btn, signup,forgot_password,resend_btn;
     FirebaseAuth firebaseAuth;
     AlertDialog.Builder builder;
-    TextView login_email,login_password;
+    EditText login_email,login_password;
     Boolean isValidData= false;
     FirebaseFirestore firestore;
     SharedPreferences sharedPreferences;
     RelativeLayout relativeLayout;
-
+    Context context;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -59,7 +60,17 @@ public class LoginFragment extends Fragment {
         firestore = FirebaseFirestore.getInstance();
         relativeLayout = view.findViewById(R.id.progress_bar);
         sharedPreferences = this.getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
+        context = getContext();
+        builder = new AlertDialog.Builder(context,R.style.CustomDialog);
+        login_email = (EditText) view.findViewById(R.id.login_email);
+        login_password  = (EditText) view.findViewById(R.id.login_password);
+        return view;
+    }
 
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         if(sharedPreferences.contains("username")){
             Log.d("sharedpref", "onCreate: came into sharedpref");
             String role = sharedPreferences.getString("role","");
@@ -67,17 +78,20 @@ public class LoginFragment extends Fragment {
             if(role.equals("hod")){
                 Intent it = new Intent(getContext(), Dashboard.class);
                 it.putExtra("role", "hod");
+                it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |  Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(it);
 
             }else if(role.equals("student")){
                 Intent it = new Intent(getContext(), Dashboard.class);
                 it.putExtra("role", "student");
+                it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |  Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(it);
 
             }
             else if(role.equals("guide")){
                 Intent it = new Intent(getContext(), Dashboard.class);
                 it.putExtra("role", "guide");
+                it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |  Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(it);
 
             }
@@ -96,8 +110,6 @@ public class LoginFragment extends Fragment {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
-                Context context = getContext();
-                builder = new AlertDialog.Builder(context,R.style.CustomDialog);
                 LinearLayout layout = new LinearLayout(context);
                 layout.setOrientation(LinearLayout.VERTICAL);
 
@@ -152,12 +164,16 @@ public class LoginFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                login_email = view.findViewById(R.id.login_email);
-                login_password  = view.findViewById(R.id.login_password);
                 String mail = login_email.getText().toString().trim();
                 String pass = login_password.getText().toString().trim();
-                isdatavalid(login_email);
-                isdatavalid(login_password);
+
+                if(login_email.getText().toString().isEmpty() || (login_password.getText().toString().trim().isEmpty())){
+                    isValidData = false;
+                    login_email.setError("Required Field");
+                    return;
+                }else{
+                    isValidData = true;
+                }
                 if(pass.length()<8){
                     isValidData = false;
                     login_password.setError("Must be 8 characters");
@@ -185,8 +201,8 @@ public class LoginFragment extends Fragment {
                                             editor.commit();
                                             Intent it = new Intent(getContext(),Dashboard.class);
                                             it.putExtra("role",role);
+                                            it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |  Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             startActivity(it);
-
                                         }else if(role.equals("hod")){
                                             SharedPreferences.Editor editor = sharedPreferences.edit();
                                             editor.putString("username",firebaseUser.getEmail());
@@ -194,8 +210,9 @@ public class LoginFragment extends Fragment {
                                             editor.commit();
                                             Intent it = new Intent(getContext(),Dashboard.class);
                                             it.putExtra("role",role);
+                                            it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |  Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             startActivity(it);
-
+                                         
                                         }else if(role.equals("student")){
                                             if(firebaseUser.isEmailVerified()){
                                                 SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -204,6 +221,7 @@ public class LoginFragment extends Fragment {
                                                 editor.commit();
                                                 Intent it = new Intent(getContext(),Dashboard.class);
                                                 it.putExtra("role",role);
+                                                it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |  Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                                 startActivity(it);
 
                                                 relativeLayout.setVisibility(View.GONE);
@@ -256,15 +274,5 @@ public class LoginFragment extends Fragment {
                 }
             }
         });
-
-        return view;
-    }
-    private void isdatavalid(TextView field) {
-        if(field.getText().toString().trim().isEmpty()){
-            isValidData = false;
-            field.setError("Required Field");
-            return;
-        }else
-            isValidData=true;
     }
 }
