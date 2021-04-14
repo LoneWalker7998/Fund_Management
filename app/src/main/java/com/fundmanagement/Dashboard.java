@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import com.fundmanagement.Adapters.DashboardAdapter;
 import com.fundmanagement.Guide.Prior_Request_G;
-import com.fundmanagement.HOD.HOD_Prior;
 import com.fundmanagement.Model.DashboardData;
 import com.fundmanagement.Student.Prior_Request;
 import com.fundmanagement.Student.View_Balance;
@@ -179,8 +178,6 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
             if(string.equals("Prior Request")){
                 startActivity(new Intent(Dashboard.this, Prior_Request_G.class));
             }
-        }else if(role.equals("hod")){
-            startActivity(new Intent(Dashboard.this, HOD_Prior.class));
         }
     }
 }

@@ -24,7 +24,7 @@
             android:layout_gravity="center"
             android:src="@drawable/profile_user"
 
-            app:civ_border_color="#FF000000"
+            app:civ_border_color="@color/blue"
             app:civ_border_width="2dp"
 
             />
@@ -42,7 +42,7 @@
     </LinearLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"
+        android:layout_height="@dimen/_2sdp"
         android:background = "@color/black"
         android:layout_below="@+id/line"
         android:layout_marginTop="@dimen/_5sdp"

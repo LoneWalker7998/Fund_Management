@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Student.Add_Bill"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:height="@dimen/_60sdp"
+        android:gravity="center"
+        android:text="Upload Bill"
+        android:textSize="@dimen/_35sdp"
+        android:textColor="#673AB7"
+        android:textStyle="bold"
+
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_2sdp"
+        android:background = "@color/purple_500"
+        android:layout_below="@+id/line"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_marginLeft="@dimen/_18sdp"
+        android:layout_marginRight="@dimen/_18sdp"
+
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Request No."
+            android:textColor="#575252"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:textSize="@dimen/_20sdp"
+            />
+
+        <TextView
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+
+            android:textColorHint="@color/black"
+            android:background="@drawable/box_shape"
+            android:textSize="@dimen/_15sdp"
+            android:padding="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <EditText
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="@dimen/_140sdp"
+            android:background="@drawable/box_shape"
+            android:hint="Upload NITC ID"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:textSize="@dimen/_20sdp"
+
+
+            />
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_gravity="center"
+                android:src="@drawable/upload"
+                android:layout_marginTop="-30sp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginRight="@dimen/_15sdp">
+        <EditText
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="@dimen/_140sdp"
+            android:background="@drawable/box_shape"
+            android:hint="Upload Bill Image"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+
+
+            android:textSize="@dimen/_20sdp"
+            />
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_gravity="center"
+                android:src="@drawable/upload"
+                android:layout_marginTop="-30sp"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:text="Submit"
+        android:textAllCaps="false"
+        android:textSize="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_80sdp"
+        android:layout_marginRight="@dimen/_80sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:background="@drawable/button"
+
+        />
+
+
+</LinearLayout>
