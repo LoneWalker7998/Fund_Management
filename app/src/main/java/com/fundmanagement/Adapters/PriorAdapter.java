@@ -37,7 +37,8 @@ public class PriorAdapter extends RecyclerView.Adapter<PriorAdapter.ViewHolder> 
         PriorHistoryData prior1 = (PriorHistoryData) priorlists.get(position);
         holder.cardText1.setText(prior1.getRequestNo());
         holder.cardText2.setText(prior1.getPriorStatus());
-        if(prior1.getPriorStatus()=="Pending...")
+        holder.date.setText(prior1.getDate());
+        if(prior1.getPriorStatus()=="Pending")
         holder.cardText2.setTextColor(Color.rgb(255,0,0));
     }
 
@@ -49,11 +50,13 @@ public class PriorAdapter extends RecyclerView.Adapter<PriorAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView cardText1;
         TextView cardText2;
+        TextView date;
         ConstraintLayout constraintLayout;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             cardText1 = itemView.findViewById(R.id.request_no);
             cardText2 = itemView.findViewById(R.id.prior_status);
+            date = itemView.findViewById(R.id.date);
         }
     }
 

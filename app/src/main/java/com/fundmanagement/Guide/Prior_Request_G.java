@@ -27,6 +27,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.WriteBatch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +45,11 @@ public class Prior_Request_G extends AppCompatActivity implements PriorGAdapter.
         recyclerView = findViewById(R.id.recyclerview_prior_g);
         firebaseAuth  = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
+        refreshData();
 
+    }
+
+    private void refreshData() {
         CollectionReference reference = firestore.collection("prior_request");
         reference.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -86,10 +91,10 @@ public class Prior_Request_G extends AppCompatActivity implements PriorGAdapter.
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(context, "Request Approved", Toast.LENGTH_SHORT).show();
-                        finish();
-                        startActivity(getIntent());
+                        itemlist.clear();
+                        refreshData();
                     }
-                }) ;
+                });
             }
         });
         builder.setNegativeButton("Reject", new DialogInterface.OnClickListener() {
@@ -100,6 +105,8 @@ public class Prior_Request_G extends AppCompatActivity implements PriorGAdapter.
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(context, "Request Rejected", Toast.LENGTH_SHORT).show();
+                        itemlist.clear();
+                        refreshData();
                     }
                 }) ;
                 dialogInterface.cancel();

@@ -1,37 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HOD.HOD_Prior">
+    tools:context=".HOD.HOD_Prior"
+    android:orientation="vertical"
+    android:background="@color/light_blue">
 
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
-        android:background="#A6D1F3"
-        android:scrollbarSize="@dimen/_15sdp"
-        android:id="@+id/toolbar_prior"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/all_prior_requests"
-            android:padding="@dimen/_5sdp"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_20sdp"
-            android:textStyle="bold"
-            />
-    </androidx.appcompat.widget.Toolbar>
+  <include layout="@layout/toolbar"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar_prior"
-        >
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-
-</RelativeLayout>
+   <androidx.recyclerview.widget.RecyclerView
+       android:layout_marginTop="@dimen/_10sdp"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/recycler_prior_h"/>
+</LinearLayout>
