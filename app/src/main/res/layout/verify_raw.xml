@@ -5,7 +5,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/_5sdp"
+    android:padding="@dimen/_7sdp"
     >
      <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -37,11 +37,8 @@
             android:gravity="center"
             android:id="@+id/textView1"
             android:text="R12345"
-
             android:textSize="@dimen/_16sdp"
             android:textColor="@color/black"
-
-
             />
 
     </LinearLayout>

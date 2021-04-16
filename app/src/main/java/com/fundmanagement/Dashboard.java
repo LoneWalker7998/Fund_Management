@@ -1,5 +1,6 @@
 package com.fundmanagement;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,21 +13,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.fundmanagement.Adapters.DashboardAdapter;
 import com.fundmanagement.Guide.Prior_Request_G;
 import com.fundmanagement.Model.DashboardData;
 import com.fundmanagement.Student.Prior_Request;
-import com.fundmanagement.Student.View_Balance;
 import com.fundmanagement.Student.View_Profile;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.protobuf.StringValue;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,6 +80,20 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
             dummydata();
         }
         else if(role.equals("student")) {
+            FirebaseUser user = firebaseAuth.getCurrentUser();
+            DocumentReference reference = firestore.collection("users").document(user.getUid().toString());
+            reference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                    int workshop_bal = value.getLong("workshop").intValue();
+                    int seminar_bal = value.getLong("seminar").intValue();
+                    int electronics_bal = value.getLong("electronics").intValue();
+
+                    workshop_balance.setText(Integer.toString(workshop_bal));
+                    seminar_balance.setText(Integer.toString(seminar_bal));
+                    electronic_balance.setText(Integer.toString(electronics_bal));
+                }
+            });
             studentdata();
         }
         else if(role.equals("hod")) {
@@ -165,10 +179,8 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
     public void OnItemClick(String string) {
         Log.d("string_req", "OnItemClick: "+string);
         if(role.equals("student")){
-            if(string .equals("Prior Request")){
+            if(string .equals("Prior Request")) {
                 startActivity(new Intent(Dashboard.this, Prior_Request.class));
-            }else if(string.equals("View Balance")){
-                startActivity(new Intent(Dashboard.this, View_Balance.class));
             }else if(string.equals("Status")){
 
             }else if(string.equals("Manage Profile")){

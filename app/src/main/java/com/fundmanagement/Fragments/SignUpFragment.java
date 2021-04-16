@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.fundmanagement.Login;
 import com.fundmanagement.R;
+import com.fundmanagement.Utils.Utils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -149,6 +151,9 @@ public class SignUpFragment extends Fragment {
                                         user.put("phone",phone.getText().toString().trim());
                                         user.put("address",address.getText().toString().trim());
                                         user.put("rollno",roll_no);
+                                        user.put("workshop",0);
+                                        user.put("seminar",0);
+                                        user.put("electronics",0);
                                         documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
@@ -160,10 +165,9 @@ public class SignUpFragment extends Fragment {
                                                 Toast.makeText(getContext(), "Error "+e.getMessage(), Toast.LENGTH_SHORT).show();
                                             }
                                         });
-                                        Intent it = new Intent(getContext(),Login.class);
-                                        it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |  Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        startActivity(it);
-
+                                        LoginFragment loginFragment = new LoginFragment();
+                                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                                        Utils.setMyFragment(loginFragment, fragmentManager);
                                     }else{
                                         Toast.makeText(getContext(), "Error "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     }

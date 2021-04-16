@@ -9,4 +9,13 @@
     <string name="all_prior_requests">All Prior Requests</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="category_name">Choose Category</string>
+
+    <string-array name="category_array">
+        <item>Not Selected</item>
+        <item>Seminar</item>
+        <item>Electronics</item>
+        <item>Workshop</item>
+    </string-array>
+
 </resources>

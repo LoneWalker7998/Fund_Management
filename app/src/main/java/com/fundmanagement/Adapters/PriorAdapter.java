@@ -11,6 +11,7 @@ import com.fundmanagement.Model.PriorHistoryData;
 import com.fundmanagement.R;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,12 +20,15 @@ import java.util.List;
 public class PriorAdapter extends RecyclerView.Adapter<PriorAdapter.ViewHolder> {
     List priorlists;
     Context context_no;
-
-    public PriorAdapter(List priorlists, Context context_no) {
+    MyitemClickOnPrior listener;
+    public PriorAdapter(List priorlists, Context context_no, MyitemClickOnPrior listener) {
         this.priorlists = priorlists;
         this.context_no = context_no;
+        this.listener = listener;
     }
-
+    public interface MyitemClickOnPrior{
+        void OnItemClick(PriorHistoryData data);
+    }
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -38,6 +42,12 @@ public class PriorAdapter extends RecyclerView.Adapter<PriorAdapter.ViewHolder> 
         holder.cardText1.setText(prior1.getRequestNo());
         holder.cardText2.setText(prior1.getPriorStatus());
         holder.date.setText(prior1.getDate());
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.OnItemClick(prior1);
+            }
+        });
         if(prior1.getPriorStatus()=="Pending")
         holder.cardText2.setTextColor(Color.rgb(255,0,0));
     }
@@ -52,11 +62,13 @@ public class PriorAdapter extends RecyclerView.Adapter<PriorAdapter.ViewHolder> 
         TextView cardText2;
         TextView date;
         ConstraintLayout constraintLayout;
+        CardView cardView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             cardText1 = itemView.findViewById(R.id.request_no);
             cardText2 = itemView.findViewById(R.id.prior_status);
             date = itemView.findViewById(R.id.date);
+            cardView = itemView.findViewById(R.id.cardview_prior);
         }
     }
 

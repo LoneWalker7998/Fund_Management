@@ -1,12 +1,14 @@
 package com.fundmanagement.Student;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -22,14 +24,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Prior_Request extends AppCompatActivity {
+public class Prior_Request extends AppCompatActivity implements PriorAdapter.MyitemClickOnPrior{
 
     Button btn;
     RecyclerView recyclerView;
@@ -52,11 +57,16 @@ public class Prior_Request extends AppCompatActivity {
         toolbar_text.setText("Prior Request");
 
         CollectionReference collectionReference = firestore.collection("prior_request");
-        collectionReference.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        collectionReference.orderBy("date1", Query.Direction.DESCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful()){
-                    for(QueryDocumentSnapshot document : task.getResult()){
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if(error!=null){
+                    Log.e("order error", "onEvent: Listen Failed ",error );
+                    return;
+                }
+                if(!value.isEmpty()) {
+                    priorlists.clear();
+                    for (QueryDocumentSnapshot document : value) {
                         FirebaseUser user  = firebaseAuth.getCurrentUser();
                         if(user.getEmail().toString().equals(document.getString("student_email"))) {
                             String prior_id = document.getString("prior_id").toString();
@@ -67,14 +77,13 @@ public class Prior_Request extends AppCompatActivity {
                             priorlists.add(item1);
                         }
                     }
-                    PriorAdapter adapter = new PriorAdapter(priorlists,Prior_Request.this);
+                    PriorAdapter adapter = new PriorAdapter(priorlists,getApplicationContext(),Prior_Request.this);
                     recyclerView.setLayoutManager(new GridLayoutManager(Prior_Request.this,1));
                     recyclerView.setAdapter(adapter);
-                }else{
-                    Toast.makeText(Prior_Request.this, "Error "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
 
         toolbar_image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,9 +101,13 @@ public class Prior_Request extends AppCompatActivity {
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
-        finish();
-        startActivity(getIntent());
+    public void OnItemClick(PriorHistoryData data) {
+        if(data.getPriorStatus().equals("Approved by HOD")){
+            Intent it = new Intent(Prior_Request.this,Add_Bill.class);
+            it.putExtra("id",data.getRequestNo());
+            it.putExtra("collectionId",data.getId());
+            startActivity(it);
+        }
     }
+
 }

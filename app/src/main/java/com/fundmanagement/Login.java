@@ -72,8 +72,6 @@ public class Login extends AppCompatActivity {
                     case R.id.signUp:
                         signin.setTextColor(R.color.black);
                         signUp.setTextColor(R.color.white);
-                        Toast.makeText(Login.this, "hello", Toast.LENGTH_SHORT).show();
-
                         SignUpFragment signUpFragment = new SignUpFragment();
                         Utils.setMyFragment(signUpFragment, getSupportFragmentManager());
                         break;

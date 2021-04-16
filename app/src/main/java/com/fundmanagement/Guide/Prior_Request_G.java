@@ -46,7 +46,6 @@ public class Prior_Request_G extends AppCompatActivity implements PriorGAdapter.
         firebaseAuth  = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
         refreshData();
-
     }
 
     private void refreshData() {
@@ -114,6 +113,4 @@ public class Prior_Request_G extends AppCompatActivity implements PriorGAdapter.
         });
         builder.show();
     }
-
-
 }

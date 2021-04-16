@@ -51,12 +51,13 @@
         android:layout_marginRight="@dimen/_8sdp"
         />
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/list">
+        android:id="@+id/recyclerview_document_verify">
 
-    </ListView>
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 

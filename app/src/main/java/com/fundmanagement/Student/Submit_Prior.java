@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
@@ -55,6 +56,7 @@ public class Submit_Prior extends AppCompatActivity {
                 prior.put("prior_id","null");
                 prior.put("status","Pending");
                 prior.put("date",strDate);
+                prior.put("date1", FieldValue.serverTimestamp());
                 documentReference.add(prior).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentReference> task) {

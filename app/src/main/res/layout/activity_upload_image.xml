@@ -20,7 +20,6 @@
         android:textSize="@dimen/_35sdp"
         android:textColor="#673AB7"
         android:textStyle="bold"
-
         />
     <View
         android:layout_width="match_parent"
@@ -66,53 +65,24 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-            android:orientation="vertical">
-        <EditText
-            android:layout_width="@dimen/_130sdp"
-            android:layout_height="@dimen/_140sdp"
-            android:background="@drawable/box_shape"
-            android:hint="Upload NITC ID"
-            android:gravity="center"
-            android:padding="@dimen/_5sdp"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:layout_marginRight="@dimen/_20sdp"
-            android:layout_marginLeft="@dimen/_20sdp"
-            android:textSize="@dimen/_20sdp"
-
-
-            />
-
-            <ImageView
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
-                android:layout_gravity="center"
-                android:src="@drawable/upload"
-                android:layout_marginTop="-30sp"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
+        android:weightSum="2">
+        <RelativeLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginRight="@dimen/_15sdp">
-        <EditText
-            android:layout_width="@dimen/_130sdp"
+            android:layout_weight="1">
+        <ImageView
+            android:id="@+id/nitc_id_image"
+            android:layout_width="@dimen/_150sdp"
             android:layout_height="@dimen/_140sdp"
             android:background="@drawable/box_shape"
-            android:hint="Upload Bill Image"
             android:gravity="center"
-            android:padding="@dimen/_5sdp"
+            android:padding="@dimen/_3sdp"
             android:layout_marginTop="@dimen/_30sdp"
-            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
 
-
-            android:textSize="@dimen/_20sdp"
             />
 
             <ImageView
@@ -120,15 +90,62 @@
                 android:layout_height="@dimen/_20sdp"
                 android:layout_gravity="center"
                 android:src="@drawable/upload"
-                android:layout_marginTop="-30sp"
+                android:layout_below="@+id/nitc_id_image"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="-30dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/nitc_id_image"
+                android:text="Upload NITC Id"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textStyle="bold"
+                android:textSize="@dimen/_13sdp"
+                android:layout_marginLeft="@dimen/_30sdp"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/bill_image"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="@dimen/_140sdp"
+                android:background="@drawable/box_shape"
+                android:gravity="center"
+                android:padding="@dimen/_3sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginRight="@dimen/_15sdp"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:textSize="@dimen/_20sdp"
                 />
 
-        </LinearLayout>
-
-
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_gravity="center"
+                android:src="@drawable/upload"
+                android:layout_below="@+id/bill_image"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="-30dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/bill_image"
+                android:text="Upload bill image"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp"
+                android:layout_marginLeft="@dimen/_30sdp"/>
+        </RelativeLayout>
     </LinearLayout>
-
     <Button
+        android:id="@+id/upload_images"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_50sdp"
         android:text="Submit"
@@ -138,8 +155,5 @@
         android:layout_marginRight="@dimen/_80sdp"
         android:layout_marginTop="@dimen/_30sdp"
         android:background="@drawable/button"
-
         />
-
-
 </LinearLayout>
