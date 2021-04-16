@@ -146,7 +146,7 @@ public class UploadImage extends AppCompatActivity {
                     return;
                 }
                 if(filePath1!=null && filePath2!=null){
-                    CollectionReference collectionReference = firestore.collection("fund_request");
+                    CollectionReference collectionReference = firestore.collection("fundRequest");
                     FirebaseUser user = firebaseAuth.getCurrentUser();
                     Map<String,Object> fund =new HashMap<>();
                     fund.put("date", FieldValue.serverTimestamp());
@@ -161,7 +161,7 @@ public class UploadImage extends AppCompatActivity {
                     fund.put("bill_image",image2);
                     fund.put("email",user.getEmail().toString());
                     fund.put("category",category);
-
+                    fund.put("message"," ");
                     collectionReference.add(fund).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {

@@ -17,11 +17,36 @@
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp">
-            <ImageView
-                android:layout_width="@dimen/_30sdp"
-                android:layout_height="@dimen/_30sdp"
-                android:src="@drawable/ic_logout"
-                android:id="@+id/logout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:src="@drawable/ic_logout"
+                    android:id="@+id/logout"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="@dimen/_30sdp"
+                    android:text="Welcome, "
+                    android:textStyle="italic"
+                    android:textSize="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_8sdp"/>
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:textSize="@dimen/_15sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:textStyle="italic"
+                    android:textColor="@color/white"
+                    />
+            </LinearLayout>
+
         </androidx.appcompat.widget.Toolbar>
         <TextView
             android:id="@+id/workshop"

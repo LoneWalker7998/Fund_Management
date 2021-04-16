@@ -19,78 +19,68 @@
             android:padding="@dimen/inner_frame_layout_padding"
             android:background="#5A9A82"
             android:orientation="horizontal"
-            android:paddingBottom="@dimen/_10sdp">
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_43sdp"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:gravity="center"
-        android:layout_marginLeft="@dimen/_8sdp">
+            android:paddingBottom="@dimen/_10sdp"
+            android:weightSum="3"
+            android:layout_gravity="center">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="center"
+                android:layout_weight="0.8">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:id="@+id/arr_no_raw"
+                        android:text="R12345"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:textSize="@dimen/_16sdp"
+                        android:textColor="@color/black"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_weight="1.7">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/name_raw"
+                        android:text="Abhishek Kumar"
+                        android:textSize="@dimen/_16sdp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/status_raw"
+                        android:text="Pending"
+                        android:textSize="@dimen/_16sdp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
 
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_weight="0.5">
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:id="@+id/textView1"
-            android:text="R12345"
-            android:textSize="@dimen/_16sdp"
-            android:textColor="@color/black"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/_5sdp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView2"
-            android:text="Abhishek Kumar"
-            android:textSize="@dimen/_16sdp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView3"
-            android:text="07-05-2021"
-
-            android:textSize="@dimen/_16sdp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-
-            />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="@dimen/_35sdp"
-        android:layout_marginTop="@dimen/_5sdp">
-
-        <ImageView
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:id="@+id/imageView"
-            android:src="@drawable/next"
-
-            />
-    </LinearLayout>
+                    <ImageView
+                        android:layout_gravity="right"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:id="@+id/go_next_raw"
+                        android:src="@drawable/next"
+                        />
+                </LinearLayout>
         </LinearLayout>
 
 

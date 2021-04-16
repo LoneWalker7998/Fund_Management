@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FundManagement">
-        <activity android:name=".Student.ViewStatus"></activity>
+        <activity android:name=".HOD.FundDetailsHOD"></activity>
+        <activity android:name=".HOD.VerifyFundRequest" />
+        <activity android:name=".ApprovedFunds" />
+        <activity android:name=".Guide.FundDetailsGuide" />
+        <activity android:name=".FundDetails" />
+        <activity android:name=".Student.ViewStatus" />
         <activity android:name=".Dashboard" />
         <activity android:name=".Student.UploadImage" />
         <activity android:name=".Student.Edit_Profile" />
@@ -18,6 +23,8 @@
         <activity android:name=".Student.Add_Bill" />
         <activity android:name=".Student.View_Profile" />
         <activity android:name=".HOD.HOD_Prior" />
+        <activity android:name=".Guide.Prior_Request_G" />
+        <activity android:name=".Guide.Document_Verify" />
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

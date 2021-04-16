@@ -15,9 +15,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.fundmanagement.Adapters.DashboardAdapter;
+import com.fundmanagement.Guide.Document_Verify;
 import com.fundmanagement.Guide.Prior_Request_G;
+import com.fundmanagement.HOD.HOD_Prior;
+import com.fundmanagement.HOD.VerifyFundRequest;
 import com.fundmanagement.Model.DashboardData;
 import com.fundmanagement.Student.Prior_Request;
+import com.fundmanagement.Student.ViewStatus;
 import com.fundmanagement.Student.View_Profile;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,6 +34,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyItemOnClickListener {
     RecyclerView recyclerView;
@@ -39,7 +44,7 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
     List itemlist = new ArrayList<>();
-    TextView workshop,workshop_balance,seminar,seminar_balance,electronic,electronic_balance;
+    TextView workshop,workshop_balance,seminar,seminar_balance,electronic,electronic_balance,name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +62,7 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
         electronic = findViewById(R.id.electronic);
         electronic_balance = findViewById(R.id.electronic_balance);
         firestore = FirebaseFirestore.getInstance();
+        name = findViewById(R.id.username);
 
         if(role.equals("guide")) {
             workshop.setText("Total Requests");
@@ -85,10 +91,16 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
             reference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
                 @Override
                 public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                    if(error!=null){
+                        Log.e("fetch_error", "onEvent: Data fetch error in student",error );
+                        return;
+                    }
                     int workshop_bal = value.getLong("workshop").intValue();
                     int seminar_bal = value.getLong("seminar").intValue();
                     int electronics_bal = value.getLong("electronics").intValue();
+                    String uname = value.getString("name").toString();
 
+                    name.setText(uname);
                     workshop_balance.setText(Integer.toString(workshop_bal));
                     seminar_balance.setText(Integer.toString(seminar_bal));
                     electronic_balance.setText(Integer.toString(electronics_bal));
@@ -182,13 +194,23 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
             if(string .equals("Prior Request")) {
                 startActivity(new Intent(Dashboard.this, Prior_Request.class));
             }else if(string.equals("Status")){
-
+                startActivity(new Intent(Dashboard.this, ViewStatus.class));
             }else if(string.equals("Manage Profile")){
                 startActivity(new Intent(Dashboard.this, View_Profile.class));
             }
         }else if(role.equals("guide")){
             if(string.equals("Prior Request")){
                 startActivity(new Intent(Dashboard.this, Prior_Request_G.class));
+            }else if(string.equals("Document Verification")){
+                startActivity(new Intent(Dashboard.this, Document_Verify.class));
+            }else if(string.equals("Verified Requests")){
+                startActivity(new Intent(Dashboard.this, ApprovedFunds.class));
+            }
+        }else if(role.equals("hod")){
+            if(string.equals("Prior Request")){
+                startActivity(new Intent(Dashboard.this, HOD_Prior.class));
+            }else  if(string.equals("Fund Request")){
+                startActivity(new Intent(Dashboard.this, VerifyFundRequest.class));
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.fundmanagement.Student;
+package com.fundmanagement;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,9 +11,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.fundmanagement.Adapters.ViewFundAdapter;
-import com.fundmanagement.FundDetails;
+import com.fundmanagement.Guide.Document_Verify;
 import com.fundmanagement.Model.FundRequestData;
-import com.fundmanagement.R;
+import com.fundmanagement.Student.ViewStatus;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -27,7 +27,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewStatus extends AppCompatActivity implements ViewFundAdapter.MyItemOnFundListener {
+public class ApprovedFunds extends AppCompatActivity implements ViewFundAdapter.MyItemOnFundListener{
     RecyclerView recyclerView;
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
@@ -35,8 +35,8 @@ public class ViewStatus extends AppCompatActivity implements ViewFundAdapter.MyI
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_status);
-        recyclerView = findViewById(R.id.recyclerview_status);
+        setContentView(R.layout.activity_approved_funds);
+        recyclerView = findViewById(R.id.approved_recycler);
         firebaseAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -45,22 +45,23 @@ public class ViewStatus extends AppCompatActivity implements ViewFundAdapter.MyI
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 itemlist.clear();
-                if(error!=null ){
-                    Log.e("fatch_error", "onEvent: Error fetching data",error );
+                if (error != null) {
+                    Log.e("fatch_error", "onEvent: Error fetching data", error);
                     return;
                 }
-                for(QueryDocumentSnapshot document : value){
-                    if(document.getString("email").equals(user.getEmail().toString())) {
-                        String arr_no = document.getString("ARR_no").toString();
-                        String status = document.getString("status").toString();
-                        String name = document.getString("name").toString();
+                for (QueryDocumentSnapshot document : value) {
+                    Toast.makeText(ApprovedFunds.this, "id = "+document.getId(), Toast.LENGTH_SHORT).show();
+                    String arr_no = document.getString("ARR_no").toString();
+                    String status = document.getString("status").toString();
+                    String name = document.getString("name").toString();
+                    if(! status.equals("Pending")) {
                         FundRequestData data = new FundRequestData(arr_no, name, status);
                         data.setCollectionId(document.getId());
                         itemlist.add(data);
                     }
                 }
-                ViewFundAdapter adapter = new ViewFundAdapter(itemlist,getApplicationContext(),ViewStatus.this);
-                recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),1));
+                ViewFundAdapter adapter = new ViewFundAdapter(itemlist, getApplicationContext(), ApprovedFunds.this);
+                recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 1));
                 recyclerView.setAdapter(adapter);
             }
         });
@@ -69,7 +70,7 @@ public class ViewStatus extends AppCompatActivity implements ViewFundAdapter.MyI
     @Override
     public void OnItemClick(String str) {
         Toast.makeText(this, ""+str, Toast.LENGTH_SHORT).show();
-        Intent it = new Intent(ViewStatus.this,FundDetails.class);
+        Intent it = new Intent(ApprovedFunds.this,FundDetails.class);
         it.putExtra("collectionId",str);
         startActivity(it);
     }
