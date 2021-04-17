@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.fundmanagement.Adapters.DashboardAdapter;
 import com.fundmanagement.Guide.Document_Verify;
 import com.fundmanagement.Guide.Prior_Request_G;
+import com.fundmanagement.HOD.ApprovedFundsHod;
 import com.fundmanagement.HOD.HOD_Prior;
 import com.fundmanagement.HOD.VerifyFundRequest;
 import com.fundmanagement.Model.DashboardData;
@@ -211,6 +212,8 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
                 startActivity(new Intent(Dashboard.this, HOD_Prior.class));
             }else  if(string.equals("Fund Request")){
                 startActivity(new Intent(Dashboard.this, VerifyFundRequest.class));
+            }else  if(string.equals("Request History")){
+                startActivity(new Intent(Dashboard.this, ApprovedFundsHod.class));
             }
         }
     }

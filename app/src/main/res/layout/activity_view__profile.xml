@@ -31,6 +31,7 @@
             />
 
         <TextView
+            android:id="@+id/username_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Saikat Barua"
@@ -83,6 +84,7 @@
             />
 
         <TextView
+            android:id="@+id/useremail_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="skb@gmail.com"
@@ -135,6 +137,7 @@
             />
 
         <TextView
+            android:id="@+id/userphone_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="9988776655"
@@ -187,6 +190,7 @@
             />
 
         <TextView
+            android:id="@+id/address_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Kooch Bihar, Bengal"
@@ -218,6 +222,7 @@
         android:gravity="center"
         >
         <TextView
+            android:id="@+id/edit_profile"
             android:layout_width="@dimen/_150sdp"
             android:layout_height="@dimen/_50sdp"
             android:background="@drawable/bg_btn2"
@@ -228,8 +233,6 @@
             android:textSize="@dimen/_18sdp"
             android:drawableLeft="@drawable/ic_edit"
             android:paddingLeft="@dimen/_15sdp"
-
-
             />
 
     </LinearLayout>
