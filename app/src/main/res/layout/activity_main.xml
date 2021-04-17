@@ -15,28 +15,26 @@
             android:id="@+id/toggle"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
-            android:layout_marginLeft="50dp"
+             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:layout_marginTop="@dimen/_10sdp"
             android:background="@drawable/box_shape"
-            android:orientation="horizontal"
-            android:padding="@dimen/_3sdp">
+               android:orientation="horizontal">
 
             <RadioButton
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_marginLeft="1dp"
                 android:id="@+id/signin"
-                android:background="@drawable/toggle_widget_background"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
                 android:layout_weight="1"
+                android:background="@drawable/toggle_widget_background"
                 android:button="@null"
+                android:checked="true"
                 android:gravity="center"
                 android:text="Sign in"
-                android:textSize="@dimen/_17sdp"
-                android:textColor="@color/black"
-                android:checked="true"/>
+
+                android:textSize="@dimen/_15sdp" />
 
             <RadioButton
                 android:layout_marginRight="1dp"
@@ -50,7 +48,6 @@
                 android:button="@null"
                 android:gravity="center"
                 android:text="SignUp"
-                android:textColor="@color/white"
                 android:textSize="@dimen/_15sdp"
                 />
         </RadioGroup>

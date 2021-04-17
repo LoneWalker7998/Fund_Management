@@ -3,6 +3,7 @@ package com.fundmanagement;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.transition.Fade;
 
 import android.annotation.SuppressLint;
 import android.app.UiAutomation;
@@ -66,6 +67,10 @@ public class Login extends AppCompatActivity {
                         signUp.setTextColor(R.color.black);
                         signin.setTextColor(R.color.white);
                         LoginFragment loginFragment = new LoginFragment();
+                        loginFragment.setSharedElementEnterTransition(new Utils.DetailsTransition());
+                        loginFragment.setEnterTransition(new Fade());
+                        loginFragment.setExitTransition(new Fade());
+                         loginFragment.setSharedElementReturnTransition(new Utils.DetailsTransition());
                         Utils.setMyFragment(loginFragment, getSupportFragmentManager());
                         break;
 
@@ -73,6 +78,11 @@ public class Login extends AppCompatActivity {
                         signin.setTextColor(R.color.black);
                         signUp.setTextColor(R.color.white);
                         SignUpFragment signUpFragment = new SignUpFragment();
+
+                        signUpFragment.setSharedElementEnterTransition(new Utils.DetailsTransition());
+                        signUpFragment.setEnterTransition(new Fade());
+                        signUpFragment.setExitTransition(new Fade());
+                        signUpFragment.setSharedElementReturnTransition(new Utils.DetailsTransition());
                         Utils.setMyFragment(signUpFragment, getSupportFragmentManager());
                         break;
 

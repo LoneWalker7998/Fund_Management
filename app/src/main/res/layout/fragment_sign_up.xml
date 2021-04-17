@@ -4,27 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUp"
-    android:orientation="vertical"
-    android:padding="@dimen/_8sdp">
+     android:orientation="vertical"
+    android:background="@color/black"
+   >
+    <View
+        android:id="@+id/myview"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"/>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:theme="@style/CustomCardCorners"
+
+        android:layout_below="@+id/myview"
+         >
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:isScrollContainer="true">
         <RelativeLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center">
             <TextView
-                android:id="@+id/signup"
+                 android:id="@+id/signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="SignUp"
+                android:layout_marginTop="@dimen/_70sdp"
+
                 android:textSize="@dimen/_40sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:textAlignment="center"
-                android:textColor="#009688"
+                 android:textAlignment="center"
+                android:textColor="#000000"
                 android:textStyle="bold"
                 />
 
@@ -155,6 +169,7 @@
         </RelativeLayout>
 
     </androidx.core.widget.NestedScrollView>
+     </com.google.android.material.card.MaterialCardView>
     <include layout="@layout/progress_bar_layout"/>
 
 </RelativeLayout>
