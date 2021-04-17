@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.fundmanagement.R;
@@ -22,7 +23,8 @@ public class View_Profile extends AppCompatActivity {
     TextView name,email,phone,address,editprofile;
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
-
+    ImageView backbutton;
+    TextView toolbarText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,11 +34,18 @@ public class View_Profile extends AppCompatActivity {
         phone = findViewById(R.id.userphone_profile);
         address = findViewById(R.id.address_profile);
         editprofile = findViewById(R.id.edit_profile);
-
+        backbutton = findViewById(R.id.toolbar_image);
+        toolbarText = findViewById(R.id.toolbar_textview);
         firebaseAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
         FirebaseUser user  = firebaseAuth.getCurrentUser();
 
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         DocumentReference reference = firestore.collection("users").document(user.getUid().toString());
         reference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override

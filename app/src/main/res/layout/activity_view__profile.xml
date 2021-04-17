@@ -12,207 +12,71 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/_15sdp"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_20sdp"
         >
 
         <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profile_image"
-            android:layout_width="@dimen/_110sdp"
-            android:layout_height="@dimen/_110sdp"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_90sdp"
             android:src="@drawable/profile_user"
-            android:layout_gravity="center"
-
             app:civ_border_width="2dp"
+            android:layout_gravity="left"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
             app:civ_border_color="@color/blue"
-
             />
-
-        <TextView
-            android:id="@+id/username_profile"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Saikat Barua"
-            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/username_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Saikat Barua"
+                android:textColor="@color/black"
+                android:layout_marginLeft="@dimen/_7sdp"
+                android:textSize="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/useremail_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="skb@gmail.com"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginLeft="@dimen/_7sdp"
+                />
+            <TextView
+                android:id="@+id/userphone_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="9988776655"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginLeft="@dimen/_7sdp"
 
-            android:textColor="@color/blue"
-            android:textSize="@dimen/_22sdp"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:textStyle="bold"
-            />
+                />
+            <TextView
+                android:id="@+id/address_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kooch Bihar, Bengal"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginLeft="@dimen/_7sdp"
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_2sdp"
-            android:background = "@color/blue"
-            android:layout_below="@+id/line"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:layout_marginLeft="@dimen/_8sdp"
-            android:layout_marginRight="@dimen/_8sdp"
-
-            />
-
+                />
+        </LinearLayout>
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/_15sdp"
-        android:paddingRight="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_gravity="center_vertical"
-        >
-
-        <ImageView
-            android:layout_width="@dimen/_25sdp"
-            android:layout_height="@dimen/_25sdp"
-            android:src="@drawable/ic_email2"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_18sdp"
-            android:layout_marginLeft="@dimen/_8sdp"
-
-            />
-
-        <TextView
-            android:id="@+id/useremail_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="skb@gmail.com"
-            android:textStyle="bold"
-            android:textColor="@color/grey"
-            android:textSize="@dimen/_18sdp"
-            android:layout_marginLeft="@dimen/_35sdp"
-
-            />
-
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"
-        android:background = "@color/blue"
-        android:layout_below="@+id/line"
-        android:layout_marginTop="@dimen/_8sdp"
-        android:layout_marginLeft="@dimen/_17sdp"
-        android:layout_marginRight="@dimen/_17sdp"
-
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/_15sdp"
-        android:paddingRight="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_gravity="center_vertical"
-        >
-
-        <ImageView
-            android:layout_width="@dimen/_25sdp"
-            android:layout_height="@dimen/_25sdp"
-            android:src="@drawable/ic_phone2"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Phone"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_18sdp"
-            android:layout_marginLeft="@dimen/_8sdp"
-
-            />
-
-        <TextView
-            android:id="@+id/userphone_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="9988776655"
-            android:textStyle="bold"
-            android:textColor="@color/grey"
-            android:textSize="@dimen/_18sdp"
-            android:layout_marginLeft="@dimen/_28sdp"
-
-            />
-
-
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"
-        android:background = "@color/blue"
-        android:layout_below="@+id/line"
-        android:layout_marginTop="@dimen/_8sdp"
-        android:layout_marginLeft="@dimen/_17sdp"
-        android:layout_marginRight="@dimen/_17sdp"
-
-        />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/_15sdp"
-        android:paddingRight="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_gravity="center_vertical"
-        >
-
-        <ImageView
-            android:layout_width="@dimen/_25sdp"
-            android:layout_height="@dimen/_25sdp"
-            android:src="@drawable/ic_location2"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Address"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_18sdp"
-            android:layout_marginLeft="@dimen/_8sdp"
-
-            />
-
-        <TextView
-            android:id="@+id/address_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kooch Bihar, Bengal"
-            android:textStyle="bold"
-            android:textColor="@color/grey"
-            android:textSize="@dimen/_18sdp"
-            android:layout_marginLeft="@dimen/_12sdp"
-
-            />
-
-
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"
-        android:background = "@color/blue"
-        android:layout_below="@+id/line"
-        android:layout_marginTop="@dimen/_8sdp"
-        android:layout_marginLeft="@dimen/_17sdp"
-        android:layout_marginRight="@dimen/_17sdp"
-
-        />
 
     <LinearLayout
         android:layout_width="match_parent"

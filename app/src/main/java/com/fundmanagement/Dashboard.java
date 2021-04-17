@@ -139,6 +139,7 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
         DashboardAdapter adapter=new DashboardAdapter(itemlist,getApplicationContext(),Dashboard.this);
         recyclerView.setLayoutManager(new GridLayoutManager(Dashboard.this,2));
         recyclerView.setAdapter(adapter);
+
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

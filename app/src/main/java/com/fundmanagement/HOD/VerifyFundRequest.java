@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fundmanagement.Adapters.ViewFundAdapter;
@@ -34,6 +37,8 @@ public class VerifyFundRequest extends AppCompatActivity implements ViewFundAdap
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
     List itemlist = new ArrayList();
+    ImageView backbutton;
+    TextView toolbarText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +46,16 @@ public class VerifyFundRequest extends AppCompatActivity implements ViewFundAdap
         recyclerView = findViewById(R.id.recyclerview_hod_funds);
         firebaseAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
+        backbutton = findViewById(R.id.toolbar_image);
+        toolbarText = findViewById(R.id.toolbar_textview);
+        toolbarText.setText("Fund Request");
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         FirebaseUser user = firebaseAuth.getCurrentUser();
         CollectionReference reference = firestore.collection("fundRequest");
         reference.orderBy("date", Query.Direction.DESCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {

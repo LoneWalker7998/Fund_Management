@@ -10,8 +10,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fundmanagement.Adapters.PriorGAdapter;
@@ -40,6 +43,8 @@ public class HOD_Prior extends AppCompatActivity implements PriorGAdapter.Myitem
     FirebaseFirestore firestore;
     List itemlist = new ArrayList();
     AlertDialog.Builder builder;
+    ImageView backbutton;
+    TextView toolbarText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +53,15 @@ public class HOD_Prior extends AppCompatActivity implements PriorGAdapter.Myitem
         recyclerView = findViewById(R.id.recycler_prior_h);
         firebaseAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-
+        backbutton = findViewById(R.id.toolbar_image);
+        toolbarText = findViewById(R.id.toolbar_textview);
+        toolbarText.setText("Prior Request");
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         refreshData();
     }
 

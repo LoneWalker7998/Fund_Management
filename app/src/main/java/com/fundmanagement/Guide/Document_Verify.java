@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fundmanagement.Adapters.ViewFundAdapter;
@@ -33,6 +36,8 @@ public class Document_Verify extends AppCompatActivity implements ViewFundAdapte
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
     List itemlist = new ArrayList();
+    ImageView backbutton;
+    TextView toolbarText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +47,16 @@ public class Document_Verify extends AppCompatActivity implements ViewFundAdapte
         firestore = FirebaseFirestore.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
         CollectionReference reference = firestore.collection("fundRequest");
+        backbutton = findViewById(R.id.toolbar_image);
+        toolbarText  = findViewById(R.id.toolbar_textview);
+        toolbarText.setText("Document Verification");
+
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         reference.orderBy("date", Query.Direction.DESCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {

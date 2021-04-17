@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,8 @@ public class Edit_Profile extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
     Boolean isdatavalid = false;
+    ImageView backbutton;
+    TextView toolbarText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +53,16 @@ public class Edit_Profile extends AppCompatActivity {
         update = findViewById(R.id.update);
         firebaseAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
+        backbutton = findViewById(R.id.toolbar_image);
+        toolbarText = findViewById(R.id.toolbar_textview);
+        toolbarText.setText("Edit Profile");
 
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         name.setText(uname);
         phone.setText(uphone);
         address.setText(uaddress);
@@ -61,6 +73,13 @@ public class Edit_Profile extends AppCompatActivity {
                 validateData(name);
                 validateData(phone);
                 validateData(address);
+                if(phone.getText().length()!=10){
+                    isdatavalid =false;
+                    phone.setError("10 Digits only");
+                    return;
+                }else{
+                    isdatavalid = true;
+                }
                 if(isdatavalid && new_password.getText().toString().isEmpty() && old_password.getText().toString().isEmpty()){
                     DocumentReference ref = firestore.collection("users").document(collectionId);
                     WriteBatch batch = firestore.batch();
