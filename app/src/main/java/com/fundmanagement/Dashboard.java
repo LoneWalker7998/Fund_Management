@@ -1,11 +1,13 @@
 package com.fundmanagement;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -45,6 +47,7 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
     List itemlist = new ArrayList<>();
+    AlertDialog.Builder builder;
     TextView workshop,workshop_balance,seminar,seminar_balance,electronic,electronic_balance,name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,10 +68,12 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
         firestore = FirebaseFirestore.getInstance();
         name = findViewById(R.id.username);
 
+
         if(role.equals("guide")) {
             workshop.setText("Total Requests");
             electronic.setText("Approved Funds");
             seminar.setText("Pending Request");
+            name.setText("Guide");
             DocumentReference ref = firestore.collection("total").document("total_id");
             ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                 @Override
@@ -110,6 +115,7 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
             studentdata();
         }
         else if(role.equals("hod")) {
+            name.setText("HOD");
             workshop.setText("Total Requests");
             electronic.setText("Approved Funds");
             seminar.setText("Pending Request");
@@ -136,14 +142,32 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences preferences =getSharedPreferences("login", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.clear();
-                editor.apply();
-                firebaseAuth.signOut();
-                Intent it = new Intent(Dashboard.this, Login.class);
-                startActivity(it);
-                finish();
+
+                Context context = Dashboard.this;
+                builder = new AlertDialog.Builder(context,R.style.CustomDialog);
+                builder.setTitle("Logout");
+                builder.setMessage("Are you sure you want to logout");
+                builder.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        SharedPreferences preferences =getSharedPreferences("login", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.clear();
+                        editor.apply();
+                        firebaseAuth.signOut();
+                        Intent it = new Intent(Dashboard.this, Login.class);
+                        startActivity(it);
+                        finish();
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+                builder.show();
+
             }
         });
     }
