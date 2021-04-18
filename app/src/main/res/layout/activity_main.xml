@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".Login"
     android:theme="@style/CardView.Light"
-    android:orientation="vertical"
-    android:padding="8dp">
+    android:background="#2B363C"
+    android:orientation="vertical">
 
         <RadioGroup
 
@@ -17,7 +17,9 @@
             android:layout_height="@dimen/_40sdp"
              android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:background="@drawable/box_shape"
+            android:background="@drawable/radio_button_shape"
+            android:padding="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_10sdp"
                android:orientation="horizontal">
 
             <RadioButton
@@ -33,7 +35,8 @@
                 android:checked="true"
                 android:gravity="center"
                 android:text="Sign in"
-
+                android:textStyle="bold"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_15sdp" />
 
             <RadioButton
@@ -48,6 +51,9 @@
                 android:button="@null"
                 android:gravity="center"
                 android:text="SignUp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+
                 android:textSize="@dimen/_15sdp"
                 />
         </RadioGroup>

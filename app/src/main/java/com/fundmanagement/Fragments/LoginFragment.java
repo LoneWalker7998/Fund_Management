@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,6 +26,7 @@ import android.widget.Toast;
 
 import com.fundmanagement.Dashboard;
 import com.fundmanagement.R;
+import com.fundmanagement.Utils.Utils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -38,7 +40,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class LoginFragment extends Fragment {
-    Button btn, signup,forgot_password,resend_btn;
+    Button btn, signup;
+    TextView forgot_password,verify_email;
     FirebaseAuth firebaseAuth;
     AlertDialog.Builder builder;
     EditText login_email,login_password;
@@ -56,7 +59,7 @@ public class LoginFragment extends Fragment {
         btn=view.findViewById(R.id.loginsubmit);
         forgot_password = view.findViewById(R.id.forgot_password);
         firebaseAuth = FirebaseAuth.getInstance();
-        resend_btn = view.findViewById(R.id.verify_email);
+        verify_email = view.findViewById(R.id.verify_email);
         firestore = FirebaseFirestore.getInstance();
         relativeLayout = view.findViewById(R.id.progress_bar);
         sharedPreferences = this.getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
@@ -95,7 +98,8 @@ public class LoginFragment extends Fragment {
                 startActivity(it);
 
             }
-        }else{
+        }
+        else{
             Log.d("sharedpref", "onCreate: NO shared pref");
         }
         signup = view.findViewById(R.id.singuppage);
@@ -110,54 +114,10 @@ public class LoginFragment extends Fragment {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
-                LinearLayout layout = new LinearLayout(context);
-                layout.setOrientation(LinearLayout.VERTICAL);
+                ForgotPasswordFragement forgotPasswordFragement = new ForgotPasswordFragement();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                Utils.setMyFragment(forgotPasswordFragement, fragmentManager);
 
-                final EditText titleBox = new EditText(context);
-                titleBox.setHint("Enter Email Id");
-                titleBox.setTextColor(R.color.black);
-                layout.addView(titleBox);
-                builder.setView(layout);
-                builder.setTitle("Forgot Password");
-                builder.setMessage("Enter Correct Email Id");
-                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        relativeLayout.setVisibility(View.VISIBLE);
-                        boolean isvalidemail = false;
-                        if(titleBox.getText().toString().trim().isEmpty()){
-                            isvalidemail=false;
-                            titleBox.setError("Required Field");
-                            return;
-                        }else{
-                            isvalidemail = true;
-                        }
-                        if(isvalidemail){
-                            String email = titleBox.getText().toString().trim();
-                            firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    relativeLayout.setVisibility(View.GONE);
-                                    if(task.isSuccessful()){
-                                        Toast.makeText(context, "Reset Password Link Has Been Sent To You Email", Toast.LENGTH_LONG).show();
-                                    }else {
-                                        Toast.makeText(context, "Error "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                                    }
-
-                                }
-                            });
-                            dialogInterface.cancel();
-                            relativeLayout.setVisibility(View.GONE);
-                        }
-                    }
-                });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                });
-                builder.show();
             }
         });
 
@@ -228,8 +188,8 @@ public class LoginFragment extends Fragment {
                                             }else{
                                                 relativeLayout.setVisibility(View.GONE);
                                                 Toast.makeText(getContext(), "Verify Your Email First", Toast.LENGTH_SHORT).show();
-                                                resend_btn.setVisibility(View.VISIBLE);
-                                                resend_btn.setOnClickListener(new View.OnClickListener() {
+                                                verify_email.setVisibility(View.VISIBLE);
+                                                verify_email.setOnClickListener(new View.OnClickListener() {
                                                     @Override
                                                     public void onClick(View view) {
                                                         relativeLayout.setVisibility(View.VISIBLE);

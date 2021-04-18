@@ -1,6 +1,9 @@
 package com.fundmanagement.Fragments;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -34,13 +37,35 @@ import java.util.Map;
 
 
 public class SignUpFragment extends Fragment {
-
+    public interface onSomeEventListener {
+         void someEvent();
+    }
+    onSomeEventListener someEventListener;
     EditText email,name,phone,address,password,confirm_password;
-    Button login,signup,forgot_password;
+    Button signup;
     Boolean isDataValid = false;
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
     RelativeLayout relativeLayout;
+
+    SharedPreferences sharedPreferences;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        Activity a = null;
+
+        if (context instanceof Activity){
+            a=(Activity) context;
+        }
+        try {
+            someEventListener = (onSomeEventListener) a;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(a.toString() + " must implement onSomeEventListener");
+        }
+
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,11 +82,11 @@ public class SignUpFragment extends Fragment {
         address = view.findViewById(R.id.address);
         password = view.findViewById(R.id.password);
         confirm_password = view.findViewById(R.id.confirm_password);
-        login = view.findViewById(R.id.login_button);
+
         signup = view.findViewById(R.id.singup_button);
         firebaseAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-
+        sharedPreferences = this.getActivity().getSharedPreferences("signup", Context.MODE_PRIVATE);
         return view;
     }
     private void validateData(EditText field) {
@@ -77,15 +102,7 @@ public class SignUpFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent it = new Intent(getContext(), Login.class);
-                it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |  Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(it);
 
-            }
-        });
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,9 +182,14 @@ public class SignUpFragment extends Fragment {
                                                 Toast.makeText(getContext(), "Error "+e.getMessage(), Toast.LENGTH_SHORT).show();
                                             }
                                         });
+
                                         LoginFragment loginFragment = new LoginFragment();
                                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                                         Utils.setMyFragment(loginFragment, fragmentManager);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putBoolean("signupSelect",true);
+                                        editor.apply();
+
                                     }else{
                                         Toast.makeText(getContext(), "Error "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     }

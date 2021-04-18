@@ -2,19 +2,17 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_centerInParent="true">
-    <RelativeLayout
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/_20sdp"
-        android:elevation="@dimen/_8sdp"
-        android:layout_centerInParent="true"
-        android:background="@drawable/progress_bar"
-        android:visibility="gone">
+    android:id="@+id/progress_bar"
+    android:visibility="gone"
+    android:background="#BA000000"
+android:clickable="true"
+     android:layout_centerInParent="true">
+
+
         <ProgressBar
-            android:layout_width="@dimen/_30sdp"
-            android:layout_height="@dimen/_30sdp"
-            android:layout_centerInParent="true" />
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/progressbar_style"
+            />
     </RelativeLayout>
-</RelativeLayout>

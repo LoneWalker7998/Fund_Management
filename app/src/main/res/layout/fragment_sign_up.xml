@@ -34,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="SignUp"
-                android:layout_marginTop="@dimen/_70sdp"
+
 
                 android:textSize="@dimen/_40sdp"
                  android:textAlignment="center"
@@ -50,8 +50,7 @@
                 android:layout_marginTop="@dimen/_20sdp"
                 android:hint="Enter NITC Mail ID"
                 android:textColorHint="@color/black"
-                android:background="@drawable/box_shape"
-                android:padding="@dimen/_5sdp"
+                 android:padding="@dimen/_5sdp"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
                 />
@@ -64,8 +63,7 @@
                 android:layout_marginTop="@dimen/_18sdp"
                 android:hint="Enter Name"
                 android:textColorHint="@color/black"
-                android:background="@drawable/box_shape"
-                android:padding="@dimen/_5sdp"
+                 android:padding="@dimen/_5sdp"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
                 />
@@ -78,8 +76,7 @@
                 android:layout_marginTop="@dimen/_18sdp"
                 android:hint="Enter you address"
                 android:textColorHint="@color/black"
-                android:background="@drawable/box_shape"
-                android:padding="@dimen/_5sdp"
+                 android:padding="@dimen/_5sdp"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
                 />
@@ -93,8 +90,7 @@
                 android:hint="Enter Phone Number"
 
                 android:textColorHint="@color/black"
-                android:background="@drawable/box_shape"
-                android:padding="@dimen/_5sdp"
+                 android:padding="@dimen/_5sdp"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
 
@@ -108,8 +104,7 @@
                 android:layout_marginTop="@dimen/_18sdp"
                 android:hint="Enter Password"
                 android:textColorHint="@color/black"
-                android:background="@drawable/box_shape"
-                android:padding="@dimen/_5sdp"
+                 android:padding="@dimen/_5sdp"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:inputType="textPassword"
@@ -123,8 +118,7 @@
                 android:layout_marginTop="@dimen/_18sdp"
                 android:hint="Re-enter Password"
                 android:textColorHint="@color/black"
-                android:background="@drawable/box_shape"
-                android:padding="@dimen/_5sdp"
+                 android:padding="@dimen/_5sdp"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:inputType="textPassword"
@@ -142,28 +136,7 @@
                 android:background="@drawable/button"
                 android:textAllCaps="false"
                 />
-            <TextView
-                android:id="@+id/already_account"
-                android:layout_below="@id/singup_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/_13sdp"
-                android:text="Already Have An Account ?"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:layout_marginTop="@dimen/_5sdp"/>
-            <Button
-                android:layout_below="@id/already_account"
-                android:id="@+id/login_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button"
-                android:layout_marginLeft="@dimen/_30sdp"
-                android:layout_marginRight="@dimen/_30sdp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:text="Login"
-                android:textSize="@dimen/_12sdp"
-                android:textAllCaps="false"/>
+
 
 
         </RelativeLayout>

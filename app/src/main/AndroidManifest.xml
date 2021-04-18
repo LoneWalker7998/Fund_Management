@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FundManagement">
-        <activity android:name=".HOD.ApprovedFundsHod"></activity>
+        <activity android:name=".HOD.ApprovedFundsHod" />
         <activity android:name=".HOD.FundDetailsHOD" />
         <activity android:name=".HOD.VerifyFundRequest" />
         <activity android:name=".ApprovedFunds" />

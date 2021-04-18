@@ -40,10 +40,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.w3c.dom.Document;
 
-public class Login extends AppCompatActivity {
+public class Login extends AppCompatActivity implements SignUpFragment.onSomeEventListener {
 
     RadioGroup toggle;
     RadioButton signin,signUp;
+    SharedPreferences sharedPreferences,sharedPreferences1;
     @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +54,13 @@ public class Login extends AppCompatActivity {
         toggle = findViewById(R.id.toggle);
         signin = findViewById(R.id.signin);
         signUp = findViewById(R.id.signUp);
-        signUp.setTextColor(R.color.black);
-        signin.setTextColor(R.color.white);
+//
         LoginFragment loginFragment = new LoginFragment();
         Utils.setMyFragment(loginFragment, getSupportFragmentManager());
+        sharedPreferences = getSharedPreferences("signup", Context.MODE_PRIVATE);
+        sharedPreferences1 = getSharedPreferences("forgot", Context.MODE_PRIVATE);
+
+
 
         toggle.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @SuppressLint("ResourceAsColor")
@@ -64,8 +68,8 @@ public class Login extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 switch (i) {
                     case R.id.signin:
-                        signUp.setTextColor(R.color.black);
-                        signin.setTextColor(R.color.white);
+//
+
                         LoginFragment loginFragment = new LoginFragment();
                         loginFragment.setSharedElementEnterTransition(new Utils.DetailsTransition());
                         loginFragment.setEnterTransition(new Fade());
@@ -75,8 +79,7 @@ public class Login extends AppCompatActivity {
                         break;
 
                     case R.id.signUp:
-                        signin.setTextColor(R.color.black);
-                        signUp.setTextColor(R.color.white);
+//
                         SignUpFragment signUpFragment = new SignUpFragment();
 
                         signUpFragment.setSharedElementEnterTransition(new Utils.DetailsTransition());
@@ -92,5 +95,28 @@ public class Login extends AppCompatActivity {
 
             }
         });
+    }
+
+
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    if (sharedPreferences1.getBoolean("isforgot",false)){
+         SharedPreferences.Editor editor = sharedPreferences1.edit();
+         editor.putBoolean("isforgot",false);
+
+        editor.apply();
+        }
+    else
+        finish();
+
+
+        }
+
+    @Override
+    public void someEvent() {
+        signin.setChecked(true);
     }
 }
