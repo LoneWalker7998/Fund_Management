@@ -26,7 +26,8 @@
         <activity android:name=".HOD.HOD_Prior" />
         <activity android:name=".Guide.Prior_Request_G" />
         <activity android:name=".Guide.Document_Verify" />
-        <activity android:name=".Login">
+        <activity android:name=".Login"
+            android:screenOrientation="locked">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

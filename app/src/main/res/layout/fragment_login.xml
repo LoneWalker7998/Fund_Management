@@ -12,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
         android:theme="@style/CustomCardCorners"
-          android:layout_marginTop="@dimen/_80sdp"
+          android:layout_marginTop="@dimen/_70sdp"
 
             >
             <LinearLayout
