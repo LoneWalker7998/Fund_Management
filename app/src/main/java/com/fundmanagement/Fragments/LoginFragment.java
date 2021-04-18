@@ -1,6 +1,7 @@
 package com.fundmanagement.Fragments;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -40,6 +41,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class LoginFragment extends Fragment {
+
+    public interface onSomeEventListenerLogin {
+        void someEventLogin();
+
+    }
     Button btn, signup;
     TextView forgot_password,verify_email;
     FirebaseAuth firebaseAuth;
@@ -50,6 +56,21 @@ public class LoginFragment extends Fragment {
     SharedPreferences sharedPreferences;
     RelativeLayout relativeLayout;
     Context context;
+    onSomeEventListenerLogin login;
+
+ @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        Activity a = null;
+
+        if (context instanceof Activity){
+            a=(Activity) context;
+        }
+        try {
+            login = (onSomeEventListenerLogin) a;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(a.toString() + " must implement onSomeEventListener");
+        }}
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -61,7 +82,7 @@ public class LoginFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
         verify_email = view.findViewById(R.id.verify_email);
         firestore = FirebaseFirestore.getInstance();
-        relativeLayout = view.findViewById(R.id.progress_bar);
+        //relativeLayout = view.findViewById(R.id.progress_bar);
         sharedPreferences = this.getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
         context = getContext();
         builder = new AlertDialog.Builder(context,R.style.CustomDialog);
@@ -142,7 +163,10 @@ public class LoginFragment extends Fragment {
                     isValidData = true;
                 }
                 if(isValidData){
-                    relativeLayout.setVisibility(View.VISIBLE);
+                   // relativeLayout.setVisibility(View.VISIBLE);
+
+                    login.someEventLogin();
+
                     firebaseAuth.signInWithEmailAndPassword(mail,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -153,6 +177,7 @@ public class LoginFragment extends Fragment {
                                 documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                     @Override
                                     public void onSuccess(DocumentSnapshot documentSnapshot) {
+
                                         String role = documentSnapshot.getString("role");
                                         if(role.equals("guide")){
                                             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -184,25 +209,26 @@ public class LoginFragment extends Fragment {
                                                 it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |  Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                                 startActivity(it);
 
-                                                relativeLayout.setVisibility(View.GONE);
+
+                                               // relativeLayout.setVisibility(View.GONE);
                                             }else{
-                                                relativeLayout.setVisibility(View.GONE);
+                                                //relativeLayout.setVisibility(View.GONE);
                                                 Toast.makeText(getContext(), "Verify Your Email First", Toast.LENGTH_SHORT).show();
                                                 verify_email.setVisibility(View.VISIBLE);
                                                 verify_email.setOnClickListener(new View.OnClickListener() {
                                                     @Override
                                                     public void onClick(View view) {
-                                                        relativeLayout.setVisibility(View.VISIBLE);
+                                                      //  relativeLayout.setVisibility(View.VISIBLE);
                                                         firebaseUser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                                             @Override
                                                             public void onSuccess(Void aVoid) {
-                                                                relativeLayout.setVisibility(View.GONE);
+                                                              //  relativeLayout.setVisibility(View.GONE);
                                                                 Toast.makeText(getContext(), "Email has been sent to your account", Toast.LENGTH_SHORT).show();
                                                             }
                                                         }).addOnFailureListener(new OnFailureListener() {
                                                             @Override
                                                             public void onFailure(@NonNull Exception e) {
-                                                                relativeLayout.setVisibility(View.GONE);
+                                                              //  relativeLayout.setVisibility(View.GONE);
                                                                 Toast.makeText(getContext(), "Error "+e.getMessage(), Toast.LENGTH_SHORT).show();
                                                             }
                                                         });
@@ -214,21 +240,22 @@ public class LoginFragment extends Fragment {
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        relativeLayout.setVisibility(View.GONE);
+
+                                        //relativeLayout.setVisibility(View.GONE);
                                         Toast.makeText(getContext(), "Error "+e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
-                                relativeLayout.setVisibility(View.GONE);
+                               // relativeLayout.setVisibility(View.GONE);
                             }else{
                                 Toast.makeText(getContext(), "Error "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                relativeLayout.setVisibility(View.GONE);
+                               // relativeLayout.setVisibility(View.GONE);
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(getContext(), "Error "+e.getMessage(), Toast.LENGTH_SHORT).show();
-                            relativeLayout.setVisibility(View.GONE);
+                           // relativeLayout.setVisibility(View.GONE);
                         }
                     });
                 }

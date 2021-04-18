@@ -65,5 +65,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/nav_host_fragment"/>
-   <include layout="@layout/progress_bar_layout"/>
+
 </RelativeLayout>

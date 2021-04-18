@@ -39,6 +39,7 @@ import java.util.Map;
 public class SignUpFragment extends Fragment {
     public interface onSomeEventListener {
          void someEvent();
+
     }
     onSomeEventListener someEventListener;
     EditText email,name,phone,address,password,confirm_password;
@@ -47,9 +48,7 @@ public class SignUpFragment extends Fragment {
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
     RelativeLayout relativeLayout;
-
     SharedPreferences sharedPreferences;
-
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -148,12 +147,14 @@ public class SignUpFragment extends Fragment {
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
+
                                     if(task.isSuccessful()){
                                         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                                         firebaseUser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
                                                 Toast.makeText(getContext(), "Verify Your Email", Toast.LENGTH_SHORT).show();
+
                                             }
                                         });
                                         String userId = firebaseUser.getUid();
@@ -175,6 +176,7 @@ public class SignUpFragment extends Fragment {
                                             @Override
                                             public void onSuccess(Void aVoid) {
                                                 Toast.makeText(getContext(), "User Data Created", Toast.LENGTH_SHORT).show();
+                                                someEventListener.someEvent();
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
                                             @Override
