@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -32,6 +33,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
+
+import static android.graphics.Color.*;
+import static com.fundmanagement.R.color.black;
 
 public class FundDetails extends AppCompatActivity {
     String collectionId;
@@ -122,13 +126,21 @@ public class FundDetails extends AppCompatActivity {
                 }
                 builder.setView(layout);
                 builder.setTitle("image");
+                builder.setCancelable(false);
                 builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.cancel();
                     }
                 });
-                builder.show();
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+                negativeButton.setTextColor(parseColor("#2B363C"));
+                negativeButton.setTextSize(18);
+//                negativeButton.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                        
+
             }
         });
         bill.setOnClickListener(new View.OnClickListener() {
@@ -166,7 +178,11 @@ public class FundDetails extends AppCompatActivity {
                         dialogInterface.cancel();
                     }
                 });
-                builder.show();
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+                negativeButton.setTextColor(parseColor("#2B363C"));
+                negativeButton.setTextSize(18);
             }
         });
     }

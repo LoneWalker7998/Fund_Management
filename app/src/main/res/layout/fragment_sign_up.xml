@@ -7,35 +7,31 @@
      android:orientation="vertical"
     android:background="@color/black"
    >
-    <View
-        android:id="@+id/myview"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_50sdp"/>
+
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:theme="@style/CustomCardCorners"
+        android:layout_marginTop="@dimen/_70sdp">
 
-        android:layout_below="@+id/myview"
-         >
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:isScrollContainer="true">
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            android:layout_gravity="end"
+            android:isScrollContainer="true">
         <RelativeLayout
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_15sdp">
             <TextView
                  android:id="@+id/signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="SignUp"
-
-
                 android:textSize="@dimen/_40sdp"
                  android:textAlignment="center"
                 android:textColor="#000000"
@@ -141,8 +137,9 @@
 
         </RelativeLayout>
 
-    </androidx.core.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
      </com.google.android.material.card.MaterialCardView>
+
     <include layout="@layout/progress_bar_layout"/>
 
 </RelativeLayout>

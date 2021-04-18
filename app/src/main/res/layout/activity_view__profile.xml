@@ -12,29 +12,31 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_marginTop="@dimen/_20sdp"
         >
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
-            android:layout_width="@dimen/_90sdp"
-            android:layout_height="@dimen/_90sdp"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="@dimen/_100sdp"
             android:src="@drawable/profile_user"
             app:civ_border_width="2dp"
-            android:layout_gravity="left"
+            android:layout_gravity="center"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_10sdp"
             app:civ_border_color="@color/blue"
             />
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:gravity="center"
             android:layout_weight="1">
             <TextView
+                android:gravity="center"
                 android:id="@+id/username_profile"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Saikat Barua"
                 android:textColor="@color/black"
@@ -44,8 +46,9 @@
                 android:textStyle="bold"
                 />
             <TextView
+                android:gravity="center"
                 android:id="@+id/useremail_profile"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="skb@gmail.com"
                 android:layout_marginTop="@dimen/_5sdp"
@@ -55,9 +58,10 @@
                 />
             <TextView
                 android:id="@+id/userphone_profile"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="9988776655"
+                android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_5sdp"
@@ -66,10 +70,11 @@
                 />
             <TextView
                 android:id="@+id/address_profile"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Kooch Bihar, Bengal"
                 android:layout_marginTop="@dimen/_5sdp"
+                android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp"
                 android:layout_marginLeft="@dimen/_7sdp"
