@@ -310,7 +310,7 @@
                         android:textAllCaps="false"
                         android:layout_marginLeft="@dimen/_8sdp"
                         android:layout_marginRight="@dimen/_8sdp"
-                        android:visibility="visible"/>
+                        android:visibility="gone"/>
                     <Button
                         android:id="@+id/reject"
                         android:layout_width="0dp"
@@ -320,7 +320,7 @@
                         android:textAllCaps="false"
                         android:layout_marginLeft="@dimen/_8sdp"
                         android:layout_marginRight="@dimen/_8sdp"
-                        android:visibility="visible"/>
+                        android:visibility="gone"/>
                 </LinearLayout>
 
             </LinearLayout>
