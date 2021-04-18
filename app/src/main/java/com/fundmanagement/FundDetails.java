@@ -42,6 +42,8 @@ public class FundDetails extends AppCompatActivity {
     String image1_url,image2_url;
     ImageView fund_image;
     FirebaseStorage firebaseStorage;
+    ImageView backbutton;
+    TextView toolbarText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +63,16 @@ public class FundDetails extends AppCompatActivity {
         nitc_id = findViewById(R.id.view_nitc_fund);
         bill = findViewById(R.id.view_bill_fund);
         firebaseStorage = FirebaseStorage.getInstance();
+        backbutton = findViewById(R.id.toolbar_image);
+        toolbarText = findViewById(R.id.toolbar_textview);
+        toolbarText.setText("Fund Details");
 
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         DocumentReference reference  = firestore.collection("fundRequest").document(collectionId);
         reference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override

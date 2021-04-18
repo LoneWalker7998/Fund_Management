@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fundmanagement.R;
@@ -51,6 +52,8 @@ public class UploadImage extends AppCompatActivity {
     FirebaseFirestore firestore;
     FirebaseAuth firebaseAuth;
     SharedPreferences sharedPreferences;
+    ImageView backbutton;
+    TextView toolbarText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +73,16 @@ public class UploadImage extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
         sharedPreferences = getSharedPreferences("deleted", Context.MODE_PRIVATE);
+        backbutton = findViewById(R.id.toolbar_image);
+        toolbarText = findViewById(R.id.toolbar_textview);
+        toolbarText.setText("Upload Image");
 
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         nitc_id_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

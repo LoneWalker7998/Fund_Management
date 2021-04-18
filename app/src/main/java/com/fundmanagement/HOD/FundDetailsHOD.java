@@ -53,6 +53,9 @@ public class FundDetailsHOD extends AppCompatActivity {
     FirebaseStorage firebaseStorage;
     Button accept,reject;
     AlertDialog.Builder builder;
+    ImageView backbutton;
+    TextView toolbarText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +79,16 @@ public class FundDetailsHOD extends AppCompatActivity {
         reject  = findViewById(R.id.reject);
         accept.setVisibility(View.VISIBLE);
         reject.setVisibility(View.VISIBLE);
+        backbutton = findViewById(R.id.toolbar_image);
+        toolbarText = findViewById(R.id.toolbar_textview);
+        toolbarText.setText("Fund Details");
 
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         accept.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceAsColor")
             @Override

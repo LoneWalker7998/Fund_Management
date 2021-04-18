@@ -23,7 +23,9 @@ import android.widget.Toast;
 import com.fundmanagement.FundDetails;
 import com.fundmanagement.HOD.HOD_Prior;
 import com.fundmanagement.R;
+import com.fundmanagement.Student.Submit_Prior;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,6 +40,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FundDetailsGuide extends AppCompatActivity {
     String collectionId;
@@ -50,6 +54,8 @@ public class FundDetailsGuide extends AppCompatActivity {
     FirebaseStorage firebaseStorage;
     Button accept,reject;
     AlertDialog.Builder builder;
+    ImageView backbutton;
+    TextView toolbarText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +80,16 @@ public class FundDetailsGuide extends AppCompatActivity {
         accept.setVisibility(View.VISIBLE);
         reject.setVisibility(View.VISIBLE);
 
+        backbutton = findViewById(R.id.toolbar_image);
+        toolbarText = findViewById(R.id.toolbar_textview);
+        toolbarText.setText("Fund Details");
 
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         accept.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceAsColor")
             @Override
@@ -160,6 +175,7 @@ public class FundDetailsGuide extends AppCompatActivity {
                     }
                 });
                 builder.show();
+                deletedata();
             }
         });
 
@@ -257,6 +273,40 @@ public class FundDetailsGuide extends AppCompatActivity {
                     }
                 });
                 builder.show();
+            }
+        });
+    }
+
+    private void deletedata() {
+        DocumentReference total = firestore.collection("total").document("total_id");
+        total.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    DocumentSnapshot document = task.getResult();
+                    if(document.exists()){
+                        int total_request = document.getLong("total_request").intValue();
+                        int pending_request = document.getLong("pending_request").intValue();
+                        int total_fund = document.getLong("total_fund").intValue();
+                        Map<String, Object> total_push = new HashMap<>();
+                        total_push.put("total_request",total_request);
+                        total_push.put("pending_request",pending_request-1);
+                        total_push.put("total_fund",total_fund);
+                        total.set(total_push).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(FundDetailsGuide.this, "Error "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                }else{
+                    Toast.makeText(FundDetailsGuide.this, "Error "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

@@ -1,37 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Student.Add_Bill"
-    android:orientation="vertical"
-
-    >
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_30sdp"
-        android:layout_marginLeft="@dimen/_15sdp"
-        android:layout_marginRight="@dimen/_15sdp"
-        android:height="@dimen/_60sdp"
-        android:gravity="center"
-        android:text="Add Documents"
-        android:textSize="@dimen/_35sdp"
-        android:textColor="#673AB7"
-        android:textStyle="bold"
-
-        />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_2sdp"
-        android:background = "@color/purple_500"
-        android:layout_below="@+id/line"
-        android:layout_marginTop="@dimen/_3sdp"
-        android:layout_marginLeft="@dimen/_18sdp"
-        android:layout_marginRight="@dimen/_18sdp"
-        />
+    android:orientation="vertical">
+    <include layout="@layout/toolbar"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

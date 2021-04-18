@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fundmanagement.HOD.HOD_Prior;
@@ -34,12 +36,24 @@ public class Submit_Prior extends AppCompatActivity {
     Button btn;
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
+    ImageView backbutton;
+    TextView toolbarText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit__prior);
         btn = findViewById(R.id.send_request);
         firestore = FirebaseFirestore.getInstance();
+        backbutton = findViewById(R.id.toolbar_image);
+        toolbarText = findViewById(R.id.toolbar_textview);
+        toolbarText.setText("Submit Prior Request");
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         firebaseAuth = FirebaseAuth.getInstance();
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +95,6 @@ public class Submit_Prior extends AppCompatActivity {
                                 int total_fund = document.getLong("total_fund").intValue();
                                 Map<String, Object> total_push = new HashMap<>();
                                 total_push.put("total_request",total_request+1);
-                                total_push.put("pending_request",pending_request+1);
                                 total_push.put("pending_request",pending_request+1);
                                 total_push.put("total_fund",total_fund);
                                 total.set(total_push).addOnSuccessListener(new OnSuccessListener<Void>() {

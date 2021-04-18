@@ -32,6 +32,8 @@ public class Add_Bill extends AppCompatActivity {
     Boolean isDataValid = false;
     Spinner spinner;
     SharedPreferences sharedPreferences;
+    ImageView backbutton;
+    TextView toolbarText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +50,16 @@ public class Add_Bill extends AppCompatActivity {
         submit_bill = findViewById(R.id.upload_bill);
         spinner = findViewById(R.id.category_spinner);
         sharedPreferences = getSharedPreferences("deleted", Context.MODE_PRIVATE);
+        backbutton  = findViewById(R.id.toolbar_image);
+        toolbarText = findViewById(R.id.toolbar_textview);
+        toolbarText.setText("Add Bill");
 
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         submit_bill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

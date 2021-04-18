@@ -29,28 +29,7 @@
 
             />
 
-        <ImageView
-
-            android:id="@+id/camera_img"
-            android:layout_width="@dimen/_35sdp"
-            android:layout_height="@dimen/_35sdp"
-            android:src="@drawable/ic_camera"
-            android:layout_marginLeft="@dimen/_40sdp"
-            android:layout_marginTop="-30sp"
-            />
-
     </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_2sdp"
-        android:background = "@color/black"
-        android:layout_below="@+id/line"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:layout_marginLeft="@dimen/_17sdp"
-        android:layout_marginRight="@dimen/_17sdp"
-
-        />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -152,8 +131,6 @@
                 android:textSize="@dimen/_18sdp"
                 android:drawableStart="@drawable/ic_update"
                 android:paddingLeft="@dimen/_15sdp"
-
-
                 />
 
         </LinearLayout>

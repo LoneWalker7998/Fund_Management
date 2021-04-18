@@ -75,18 +75,20 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
             seminar.setText("Pending Request");
             name.setText("Guide");
             DocumentReference ref = firestore.collection("total").document("total_id");
-            ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            ref.addSnapshotListener(new EventListener<DocumentSnapshot>() {
                 @Override
-                public void onSuccess(DocumentSnapshot document) {
-                    if(document.exists()){
-                        int total_request = document.getLong("total_request").intValue();
-                        int pending_request = document.getLong("pending_request").intValue();
-                        int total_fund = document.getLong("total_fund").intValue();
-//                        Toast.makeText(Dashboard.this, "Data= "+total_request+" "+pending_request+" "+total_fund, Toast.LENGTH_SHORT).show();
-                        workshop_balance.setText(Integer.toString(total_request));
-                        seminar_balance.setText(Integer.toString(pending_request));
-                        electronic_balance.setText(Integer.toString(total_fund));
+                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                    if(error!=null){
+                        Log.e("fetch_data", "onEvent: data fetching error in dashboard",error );
+                        return;
                     }
+                    int total_request = value.getLong("total_request").intValue();
+                    int pending_request = value.getLong("pending_request").intValue();
+                    int total_fund = value.getLong("total_fund").intValue();
+//                        Toast.makeText(Dashboard.this, "Data= "+total_request+" "+pending_request+" "+total_fund, Toast.LENGTH_SHORT).show();
+                    workshop_balance.setText(Integer.toString(total_request));
+                    seminar_balance.setText(Integer.toString(pending_request));
+                    electronic_balance.setText(Integer.toString(total_fund));
                 }
             });
             dummydata();
@@ -120,18 +122,20 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
             electronic.setText("Approved Funds");
             seminar.setText("Pending Request");
             DocumentReference ref = firestore.collection("total").document("total_id");
-            ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            ref.addSnapshotListener(new EventListener<DocumentSnapshot>() {
                 @Override
-                public void onSuccess(DocumentSnapshot document) {
-                    if(document.exists()){
-                        int total_request = document.getLong("total_request").intValue();
-                        int pending_request = document.getLong("pending_request").intValue();
-                        int total_fund = document.getLong("total_fund").intValue();
-//                        Toast.makeText(Dashboard.this, "Data= "+total_request+" "+pending_request+" "+total_fund, Toast.LENGTH_SHORT).show();
-                        workshop_balance.setText(Integer.toString(total_request));
-                        seminar_balance.setText(Integer.toString(pending_request));
-                        electronic_balance.setText(Integer.toString(total_fund));
+                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                    if(error!=null){
+                        Log.e("fetch_error", "onEvent: Data fetch error in student",error );
+                        return;
                     }
+                    int total_request = value.getLong("total_request").intValue();
+                    int pending_request = value.getLong("pending_request").intValue();
+                    int total_fund = value.getLong("total_fund").intValue();
+//                        Toast.makeText(Dashboard.this, "Data= "+total_request+" "+pending_request+" "+total_fund, Toast.LENGTH_SHORT).show();
+                    workshop_balance.setText(Integer.toString(total_request));
+                    seminar_balance.setText(Integer.toString(pending_request));
+                    electronic_balance.setText(Integer.toString(total_fund));
                 }
             });
             hoddata();
