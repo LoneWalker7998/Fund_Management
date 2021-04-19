@@ -66,7 +66,7 @@ RelativeLayout relativeLayout;
                     firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            relativeLayout.setVisibility(View.GONE);
+                            //relativeLayout.setVisibility(View.GONE);
                             getFragmentManager().popBackStack();
                             if (task.isSuccessful()) {
                                 Toast.makeText(getContext(), "Reset Password Link Has Been Sent To You Email", Toast.LENGTH_LONG).show();
@@ -76,7 +76,7 @@ RelativeLayout relativeLayout;
 
                         }
                     });
-                    relativeLayout.setVisibility(View.GONE);
+                    //relativeLayout.setVisibility(View.GONE);
                 }
 
             }

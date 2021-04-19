@@ -3,6 +3,7 @@ package com.fundmanagement;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.transition.Fade;
 
 import android.annotation.SuppressLint;
@@ -24,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fundmanagement.Fragments.LoginFragment;
+import com.fundmanagement.Fragments.ProgressFragment;
 import com.fundmanagement.Fragments.SignUpFragment;
 import com.fundmanagement.Student.Prior_Request;
 import com.fundmanagement.Utils.Utils;
@@ -40,11 +42,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.w3c.dom.Document;
 
-public class Login extends AppCompatActivity implements SignUpFragment.onSomeEventListener {
+public class Login extends AppCompatActivity implements SignUpFragment.onSomeEventListener,LoginFragment.onSomeEventListenerLogin {
 
     RadioGroup toggle;
     RadioButton signin,signUp;
     SharedPreferences sharedPreferences,sharedPreferences1;
+
     @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,8 @@ public class Login extends AppCompatActivity implements SignUpFragment.onSomeEve
         toggle = findViewById(R.id.toggle);
         signin = findViewById(R.id.signin);
         signUp = findViewById(R.id.signUp);
+
+
 //
         LoginFragment loginFragment = new LoginFragment();
         Utils.setMyFragment(loginFragment, getSupportFragmentManager());
@@ -118,5 +123,16 @@ public class Login extends AppCompatActivity implements SignUpFragment.onSomeEve
     @Override
     public void someEvent() {
         signin.setChecked(true);
+
+    }
+
+
+    @Override
+    public void someEventLogin() {
+        toggle.setVisibility(View.GONE);
+        ProgressFragment progressFragment = new ProgressFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Utils.setMyFragment(progressFragment, fragmentManager);
+
     }
 }

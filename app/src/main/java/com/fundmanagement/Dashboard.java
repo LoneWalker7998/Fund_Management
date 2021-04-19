@@ -67,7 +67,37 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
         electronic_balance = findViewById(R.id.electronic_balance);
         firestore = FirebaseFirestore.getInstance();
         name = findViewById(R.id.username);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                Context context = Dashboard.this;
+                builder = new AlertDialog.Builder(context,R.style.CustomDialog);
+                builder.setTitle("Logout");
+                builder.setMessage("Are you sure you want to logout");
+                builder.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        SharedPreferences preferences =getSharedPreferences("login", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.clear();
+                        editor.apply();
+                        firebaseAuth.signOut();
+                        Intent it = new Intent(Dashboard.this, Login.class);
+                        startActivity(it);
+                        finish();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+                builder.show();
+
+            }
+        });
 
         if(role.equals("guide")) {
             workshop.setText("Total Requests");
@@ -144,37 +174,7 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
         recyclerView.setLayoutManager(new GridLayoutManager(Dashboard.this,2));
         recyclerView.setAdapter(adapter);
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                Context context = Dashboard.this;
-                builder = new AlertDialog.Builder(context,R.style.CustomDialog);
-                builder.setTitle("Logout");
-                builder.setMessage("Are you sure you want to logout");
-                builder.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        SharedPreferences preferences =getSharedPreferences("login", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = preferences.edit();
-                        editor.clear();
-                        editor.apply();
-                        firebaseAuth.signOut();
-                        Intent it = new Intent(Dashboard.this, Login.class);
-                        startActivity(it);
-                        finish();
-                    }
-                });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                });
-                builder.show();
-
-            }
-        });
     }
 
 

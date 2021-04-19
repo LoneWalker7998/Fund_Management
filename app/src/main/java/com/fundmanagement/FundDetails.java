@@ -47,6 +47,7 @@ public class FundDetails extends AppCompatActivity {
     ImageView fund_image;
     FirebaseStorage firebaseStorage;
     ImageView backbutton;
+    AlertDialog.Builder builder;
     TextView toolbarText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +103,7 @@ public class FundDetails extends AppCompatActivity {
         nitc_id.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder;
+
                 builder =new AlertDialog.Builder(FundDetails.this,R.style.CustomDialog);
                 Context context = FundDetails.this;
                 LinearLayout layout = new LinearLayout(context);
@@ -147,7 +148,7 @@ public class FundDetails extends AppCompatActivity {
         bill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder;
+
                 builder =new AlertDialog.Builder(FundDetails.this,R.style.CustomDialog);
                 Context context = FundDetails.this;
                 LinearLayout layout = new LinearLayout(context);
@@ -173,6 +174,12 @@ public class FundDetails extends AppCompatActivity {
                 }
                 builder.setView(layout);
                 builder.setTitle("image");
+                builder.setPositiveButton("", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
                 builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
