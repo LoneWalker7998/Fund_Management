@@ -43,9 +43,11 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
+import static android.graphics.Color.parseColor;
+
 public class FundDetailsGuide extends AppCompatActivity {
     String collectionId;
-    TextView arr_no,prior_id,category,date,email,name,paid_amount,roll_number,status;
+    TextView arr_no,prior_id,category,date,email,name,paid_amount,roll_number,status,message;
     Button nitc_id,bill;
     FirebaseFirestore firestore;
     FirebaseAuth firebaseAuth;
@@ -79,7 +81,7 @@ public class FundDetailsGuide extends AppCompatActivity {
         reject  = findViewById(R.id.reject);
         accept.setVisibility(View.VISIBLE);
         reject.setVisibility(View.VISIBLE);
-
+        message = findViewById(R.id.message_fund);
         backbutton = findViewById(R.id.toolbar_image);
         toolbarText = findViewById(R.id.toolbar_textview);
         toolbarText.setText("Fund Details");
@@ -107,7 +109,7 @@ public class FundDetailsGuide extends AppCompatActivity {
                 builder.setView(layout);
                 builder.setTitle("ARR Number");
                 builder.setMessage("Please fill it now");
-
+                builder.setCancelable(false);
                 builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -127,10 +129,17 @@ public class FundDetailsGuide extends AppCompatActivity {
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();;
+                        dialogInterface.cancel();
                     }
                 });
-                builder.show();
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+                negativeButton.setTextColor(parseColor("#2B363C"));
+                negativeButton.setTextSize(18);
+                Button positvebutton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                positvebutton.setTextColor(parseColor("#2B363C"));
+                positvebutton.setTextSize(18);
             }
         });
 
@@ -151,7 +160,7 @@ public class FundDetailsGuide extends AppCompatActivity {
                 builder.setView(layout);
                 builder.setTitle("Rejection Message");
                 builder.setMessage("Please leave a reason for rejection");
-
+                builder.setCancelable(false);
                 builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -174,7 +183,14 @@ public class FundDetailsGuide extends AppCompatActivity {
                         dialogInterface.cancel();;
                     }
                 });
-                builder.show();
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+                negativeButton.setTextColor(parseColor("#2B363C"));
+                negativeButton.setTextSize(18);
+                Button positvebutton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                positvebutton.setTextColor(parseColor("#2B363C"));
+                positvebutton.setTextSize(18);
                 deletedata();
             }
         });
@@ -196,8 +212,10 @@ public class FundDetailsGuide extends AppCompatActivity {
                 paid_amount.setText(value.getString("paid_amount").toString());
                 roll_number.setText(value.getString("roll_no").toString());
                 status.setText(value.getString("status").toString());
+                message.setText(value.get("message").toString());
                 image1_url = value.getString("nitc_id").toString();
                 image2_url = value.getString("bill_image").toString();
+
             }
         });
         nitc_id.setOnClickListener(new View.OnClickListener() {
@@ -228,13 +246,19 @@ public class FundDetailsGuide extends AppCompatActivity {
                 }
                 builder.setView(layout);
                 builder.setTitle("image");
+                builder.setCancelable(false);
                 builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.cancel();
                     }
                 });
-                builder.show();
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+                negativeButton.setTextColor(parseColor("#2B363C"));
+                negativeButton.setTextSize(18);
+
             }
         });
         bill.setOnClickListener(new View.OnClickListener() {
@@ -266,13 +290,19 @@ public class FundDetailsGuide extends AppCompatActivity {
                 }
                 builder.setView(layout);
                 builder.setTitle("image");
+                builder.setCancelable(false);
                 builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.cancel();
                     }
                 });
-                builder.show();
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+                negativeButton.setTextColor(parseColor("#2B363C"));
+                negativeButton.setTextSize(18);
+
             }
         });
     }

@@ -65,7 +65,7 @@ public class ApprovedFunds extends AppCompatActivity implements ViewFundAdapter.
                     return;
                 }
                 for (QueryDocumentSnapshot document : value) {
-                    Toast.makeText(ApprovedFunds.this, "id = "+document.getId(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(ApprovedFunds.this, "id = "+document.getId(), Toast.LENGTH_SHORT).show();
                     String arr_no = document.getString("ARR_no").toString();
                     String status = document.getString("status").toString();
                     String name = document.getString("name").toString();
@@ -84,7 +84,7 @@ public class ApprovedFunds extends AppCompatActivity implements ViewFundAdapter.
 
     @Override
     public void OnItemClick(String str) {
-        Toast.makeText(this, ""+str, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, ""+str, Toast.LENGTH_SHORT).show();
         Intent it = new Intent(ApprovedFunds.this,FundDetails.class);
         it.putExtra("collectionId",str);
         startActivity(it);

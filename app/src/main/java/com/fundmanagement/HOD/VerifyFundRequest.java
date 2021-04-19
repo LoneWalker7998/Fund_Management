@@ -67,7 +67,7 @@ public class VerifyFundRequest extends AppCompatActivity implements ViewFundAdap
                     return;
                 }
                 for (QueryDocumentSnapshot document : value) {
-                    Toast.makeText(VerifyFundRequest.this, "id = "+document.getId(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(VerifyFundRequest.this, "id = "+document.getId(), Toast.LENGTH_SHORT).show();
                     String arr_no = document.getString("ARR_no").toString();
                     String status = document.getString("status").toString();
                     String name = document.getString("name").toString();

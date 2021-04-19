@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,11 +21,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class View_Profile extends AppCompatActivity {
-    TextView name,email,phone,address,editprofile;
+    TextView name,email,phone,address;
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
     ImageView backbutton;
+    Button editprofile;
     TextView toolbarText;
+    Button changepassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +42,7 @@ public class View_Profile extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
         FirebaseUser user  = firebaseAuth.getCurrentUser();
-
+        changepassword = findViewById(R.id.change_password);
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,6 +73,13 @@ public class View_Profile extends AppCompatActivity {
                 it.putExtra("phone",phone.getText().toString());
                 it.putExtra("address",address.getText().toString());
                 startActivity(it);
+            }
+        });
+
+        changepassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(View_Profile.this,ChnagePassword.class));
             }
         });
     }

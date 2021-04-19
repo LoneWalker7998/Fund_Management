@@ -34,7 +34,8 @@
                 android:button="@null"
                 android:checked="true"
                 android:gravity="center"
-                android:text="Sign in"
+                android:text="Login"
+                android:fontFamily="@font/montserrat_semibold"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_15sdp" />
@@ -50,6 +51,7 @@
                 android:background="@drawable/toggle_widget_background"
                 android:button="@null"
                 android:gravity="center"
+                android:fontFamily="@font/montserrat_semibold"
                 android:text="SignUp"
                 android:textStyle="bold"
                 android:textColor="@color/white"

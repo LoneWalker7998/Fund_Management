@@ -142,7 +142,7 @@ public class LoginFragment extends Fragment {
                     isValidData = true;
                 }
                 if(isValidData){
-                    relativeLayout.setVisibility(View.VISIBLE);
+//                    relativeLayout.setVisibility(View.VISIBLE);
                     firebaseAuth.signInWithEmailAndPassword(mail,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -192,7 +192,7 @@ public class LoginFragment extends Fragment {
                                                 verify_email.setOnClickListener(new View.OnClickListener() {
                                                     @Override
                                                     public void onClick(View view) {
-                                                        relativeLayout.setVisibility(View.VISIBLE);
+//                                                        relativeLayout.setVisibility(View.VISIBLE);
                                                         firebaseUser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                                             @Override
                                                             public void onSuccess(Void aVoid) {

@@ -189,6 +189,9 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
         DashboardData data2 = new DashboardData("Request History","View Fund History",R.drawable.ic_history);
         itemlist.add(data2);
 
+        DashboardData data3 = new DashboardData("T&C","View Terms & Condition",R.drawable.ic_tandc);
+        itemlist.add(data3);
+
     }
     private void studentdata() {
 
@@ -200,6 +203,9 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
 
         DashboardData data2 = new DashboardData("Manage Profile","View, Update Profile",R.drawable.ic_profile);
         itemlist.add(data2);
+
+        DashboardData data3 = new DashboardData("T&C","View Terms & Condition",R.drawable.ic_tandc);
+        itemlist.add(data3);
     }
 
     private void dummydata() {
@@ -212,7 +218,7 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
         DashboardData data2 = new DashboardData("Verified Requests","View Requests",R.drawable.ic_verified);
         itemlist.add(data2);
 
-        DashboardData data3 = new DashboardData("Status","View Request Status",R.drawable.ic_status);
+        DashboardData data3 = new DashboardData("T&C","View Terms & Condition",R.drawable.ic_tandc);
         itemlist.add(data3);
 
     }

@@ -144,7 +144,7 @@ public class SignUpFragment extends Fragment {
                     }
                 }
                 if(isDataValid){
-                    Toast.makeText(getContext(), "Data is verified", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), "Data is verified", Toast.LENGTH_SHORT).show();
                     firebaseAuth.createUserWithEmailAndPassword(email.getText().toString().trim(),password.getText().toString().trim())
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
@@ -175,7 +175,7 @@ public class SignUpFragment extends Fragment {
                                         documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
-                                                Toast.makeText(getContext(), "User Data Created", Toast.LENGTH_SHORT).show();
+//                                                Toast.makeText(getContext(), "User Data Created", Toast.LENGTH_SHORT).show();
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
                                             @Override

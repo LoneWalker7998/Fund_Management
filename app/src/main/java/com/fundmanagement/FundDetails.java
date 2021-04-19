@@ -39,7 +39,7 @@ import static com.fundmanagement.R.color.black;
 
 public class FundDetails extends AppCompatActivity {
     String collectionId;
-    TextView arr_no,prior_id,category,date,email,name,paid_amount,roll_number,status;
+    TextView arr_no,prior_id,category,date,email,name,paid_amount,roll_number,status,message;
     Button nitc_id,bill;
     FirebaseFirestore firestore;
     FirebaseAuth firebaseAuth;
@@ -70,7 +70,7 @@ public class FundDetails extends AppCompatActivity {
         backbutton = findViewById(R.id.toolbar_image);
         toolbarText = findViewById(R.id.toolbar_textview);
         toolbarText.setText("Fund Details");
-
+        message = findViewById(R.id.message_fund);
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,6 +94,7 @@ public class FundDetails extends AppCompatActivity {
                 paid_amount.setText(value.getString("paid_amount").toString());
                 roll_number.setText(value.getString("roll_no").toString());
                 status.setText(value.getString("status").toString());
+                message.setText(value.getString("message"));
                 image1_url = value.getString("nitc_id").toString();
                 image2_url = value.getString("bill_image").toString();
             }

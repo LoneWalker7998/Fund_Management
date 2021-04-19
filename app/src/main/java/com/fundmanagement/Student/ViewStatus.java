@@ -83,7 +83,7 @@ public class ViewStatus extends AppCompatActivity implements ViewFundAdapter.MyI
 
     @Override
     public void OnItemClick(String str) {
-        Toast.makeText(this, ""+str, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, ""+str, Toast.LENGTH_SHORT).show();
         Intent it = new Intent(ViewStatus.this,FundDetails.class);
         it.putExtra("collectionId",str);
         startActivity(it);

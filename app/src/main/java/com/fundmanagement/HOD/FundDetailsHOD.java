@@ -22,7 +22,9 @@ import android.widget.Toast;
 
 import com.fundmanagement.Guide.FundDetailsGuide;
 import com.fundmanagement.R;
+import com.fundmanagement.Student.Submit_Prior;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,10 +43,14 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firestore.v1.Write;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+
+import static android.graphics.Color.parseColor;
 
 public class FundDetailsHOD extends AppCompatActivity {
     String collectionId;
-    TextView arr_no,prior_id,category,date,email,name,paid_amount,roll_number,status;
+    TextView arr_no,prior_id,category,date,email,name,paid_amount,roll_number,status,message;
     Button nitc_id,bill;
     FirebaseFirestore firestore;
     FirebaseAuth firebaseAuth;
@@ -82,7 +88,7 @@ public class FundDetailsHOD extends AppCompatActivity {
         backbutton = findViewById(R.id.toolbar_image);
         toolbarText = findViewById(R.id.toolbar_textview);
         toolbarText.setText("Fund Details");
-
+        message  =findViewById(R.id.message_fund);
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,7 +105,7 @@ public class FundDetailsHOD extends AppCompatActivity {
 
                 builder.setTitle("Accept Request");
                 builder.setMessage("Are you sure you want to accept this request");
-
+                builder.setCancelable(false);
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -123,7 +129,37 @@ public class FundDetailsHOD extends AppCompatActivity {
                                                 }else if(category.getText().toString().equals("Electronics")){
                                                     value =  documentSnapshot.getLong("electronics").intValue();
                                                 }
+                                                DocumentReference total = firestore.collection("total").document("total_id");
+                                                total.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                        if(task.isSuccessful()){
+                                                            DocumentSnapshot document = task.getResult();
+                                                            if(document.exists()){
+                                                                int total_request = document.getLong("total_request").intValue();
+                                                                int pending_request = document.getLong("pending_request").intValue();
+                                                                int total_fund = document.getLong("total_fund").intValue();
+                                                                Map<String, Object> total_push = new HashMap<>();
+                                                                total_push.put("total_request",total_request);
+                                                                total_push.put("pending_request",pending_request);
+                                                                total_push.put("total_fund",total_fund+1);
+                                                                total.set(total_push).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                    @Override
+                                                                    public void onSuccess(Void aVoid) {
 
+                                                                    }
+                                                                }).addOnFailureListener(new OnFailureListener() {
+                                                                    @Override
+                                                                    public void onFailure(@NonNull Exception e) {
+                                                                        Toast.makeText(FundDetailsHOD.this, "Error "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                                    }
+                                                                });
+                                                            }
+                                                        }else{
+                                                            Toast.makeText(FundDetailsHOD.this, "Error "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    }
+                                                });
                                                 DocumentReference change_data = firestore.collection("users").document(documentSnapshot.getId());
                                                 String temp_amount = paid_amount.getText().toString();
                                                 int amount = value + Integer.parseInt(temp_amount);
@@ -151,7 +187,23 @@ public class FundDetailsHOD extends AppCompatActivity {
                         dialogInterface.cancel();
                     }
                 });
-                builder.show();
+                builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+                negativeButton.setTextColor(parseColor("#2B363C"));
+                negativeButton.setTextSize(18);
+                Button positvebutton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                positvebutton.setTextColor(parseColor("#2B363C"));
+                positvebutton.setTextSize(18);
+                Button neutralbutton = dialog.getButton(AlertDialog.BUTTON_NEUTRAL);
+                neutralbutton.setTextColor(parseColor("#2B363C"));
+                neutralbutton.setTextSize(18);
             }
         });
 
@@ -164,7 +216,7 @@ public class FundDetailsHOD extends AppCompatActivity {
                 builder = new AlertDialog.Builder(context,R.style.CustomDialog);
                 builder.setTitle("Rejection Request");
                 builder.setMessage("Are you sure you want to reject this request");
-
+                builder.setCancelable(false);
                 builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -186,7 +238,15 @@ public class FundDetailsHOD extends AppCompatActivity {
                         dialogInterface.cancel();;
                     }
                 });
-                builder.show();
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+                negativeButton.setTextColor(parseColor("#2B363C"));
+                negativeButton.setTextSize(18);
+                Button positvebutton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                positvebutton.setTextColor(parseColor("#2B363C"));
+                positvebutton.setTextSize(18);
             }
         });
 
@@ -209,6 +269,7 @@ public class FundDetailsHOD extends AppCompatActivity {
                 paid_amount.setText(value.getString("paid_amount").toString());
                 roll_number.setText(value.getString("roll_no").toString());
                 status.setText(value.getString("status").toString());
+                message.setText(value.getString("message"));
                 image1_url = value.getString("nitc_id").toString();
                 image2_url = value.getString("bill_image").toString();
             }
@@ -241,13 +302,18 @@ public class FundDetailsHOD extends AppCompatActivity {
                 }
                 builder.setView(layout);
                 builder.setTitle("image");
+                builder.setCancelable(false);
                 builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.cancel();
                     }
                 });
-                builder.show();
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+                negativeButton.setTextColor(parseColor("#2B363C"));
+                negativeButton.setTextSize(18);
             }
         });
         bill.setOnClickListener(new View.OnClickListener() {
@@ -279,13 +345,18 @@ public class FundDetailsHOD extends AppCompatActivity {
                 }
                 builder.setView(layout);
                 builder.setTitle("image");
+                builder.setCancelable(false);
                 builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.cancel();
                     }
                 });
-                builder.show();
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+                negativeButton.setTextColor(parseColor("#2B363C"));
+                negativeButton.setTextSize(18);
             }
         });
     }

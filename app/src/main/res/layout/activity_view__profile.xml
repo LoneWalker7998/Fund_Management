@@ -38,10 +38,11 @@
                 android:id="@+id/username_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semibold"
                 android:text="Saikat Barua"
                 android:textColor="@color/black"
                 android:layout_marginLeft="@dimen/_7sdp"
-                android:textSize="@dimen/_15sdp"
+                android:textSize="@dimen/_19sdp"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:textStyle="bold"
                 />
@@ -51,6 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="skb@gmail.com"
+                android:fontFamily="@font/montserrat_regular"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp"
@@ -62,6 +64,7 @@
                 android:layout_height="wrap_content"
                 android:text="9988776655"
                 android:gravity="center"
+                android:fontFamily="@font/montserrat_regular"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_5sdp"
@@ -76,6 +79,7 @@
                 android:layout_marginTop="@dimen/_5sdp"
                 android:gravity="center"
                 android:textColor="@color/black"
+                android:fontFamily="@font/montserrat_regular"
                 android:textSize="@dimen/_12sdp"
                 android:layout_marginLeft="@dimen/_7sdp"
 
@@ -90,20 +94,36 @@
         android:orientation="vertical"
         android:gravity="center"
         >
-        <TextView
+        <Button
             android:id="@+id/edit_profile"
-            android:layout_width="@dimen/_150sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:background="@drawable/bg_btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button"
             android:text="Edit Profile"
             android:gravity="center"
-            android:textColor="@color/blue"
+            android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="@dimen/_18sdp"
-            android:drawableLeft="@drawable/ic_edit"
-            android:paddingLeft="@dimen/_15sdp"
-            />
+            android:textSize="@dimen/_15sdp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textAllCaps="false"
+            android:layout_marginLeft="@dimen/_7sdp"
+            android:layout_marginRight="@dimen/_7sdp"
 
+            />
+        <Button
+            android:id="@+id/change_password"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="Chnage Password"
+            android:layout_marginLeft="@dimen/_7sdp"
+            android:layout_marginRight="@dimen/_7sdp"
+            android:background="@drawable/button"
+            android:textSize="@dimen/_15sdp"/>
     </LinearLayout>
 
 </LinearLayout>

@@ -12,7 +12,7 @@
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginLeft="@dimen/_15sdp"
         android:layout_marginRight="@dimen/_15sdp"
-        android:layout_marginBottom="@dimen/_150sdp"
+        android:layout_marginBottom="@dimen/_110sdp"
         app:cardCornerRadius="@dimen/_20sdp">
         <RelativeLayout
             android:layout_width="match_parent"
@@ -35,13 +35,14 @@
                     android:backgroundTint="@color/white"/>
             </androidx.cardview.widget.CardView>
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="    Request Details"
+                android:text="   Request Details"
                 android:textStyle="bold"
                 android:textSize="@dimen/_20sdp"
+                android:fontFamily="@font/montserrat_semibold"
                 android:textColor="@color/white"
-                android:layout_centerHorizontal="true"
+                android:textAlignment="center"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:id="@+id/normalText" />
@@ -67,7 +68,7 @@
                         android:layout_height="wrap_content"
                         android:text="ARR Number: "
                         android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold"
+                        android:fontFamily="@font/montserrat_regular"
                         android:textColor="@color/white"/>
                     <TextView
                         android:id="@+id/arr_no_fund"
@@ -75,8 +76,8 @@
                         android:layout_height="wrap_content"
                         android:text="number"
                         android:textSize="@dimen/_14sdp"
+                        android:fontFamily="@font/montserrat_light"
                         android:layout_marginLeft="@dimen/_4sdp"
-                        android:textStyle="bold"
                         android:textColor="@color/white"/>
                 </LinearLayout>
                 <LinearLayout
@@ -89,8 +90,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Prior Id: "
+                        android:fontFamily="@font/montserrat_regular"
                         android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold"
                         android:textColor="@color/white"/>
                     <TextView
                         android:id="@+id/prior_no_fund"
@@ -99,7 +100,6 @@
                         android:text="prior id"
                         android:textSize="@dimen/_14sdp"
                         android:layout_marginLeft="@dimen/_4sdp"
-                        android:textStyle="bold"
                         android:textColor="@color/white"/>
                 </LinearLayout>
                 <LinearLayout
@@ -112,17 +112,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Category: "
+                        android:fontFamily="@font/montserrat_regular"
                         android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold"
                         android:textColor="@color/white"/>
                     <TextView
                         android:id="@+id/category_fund"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="category"
+                        android:fontFamily="@font/montserrat_light"
                         android:textSize="@dimen/_14sdp"
                         android:layout_marginLeft="@dimen/_4sdp"
-                        android:textStyle="bold"
                         android:textColor="@color/white"/>
                 </LinearLayout>
                 <LinearLayout
@@ -136,16 +136,16 @@
                         android:layout_height="wrap_content"
                         android:text="Date: "
                         android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold"
+                        android:fontFamily="@font/montserrat_regular"
                         android:textColor="@color/white"/>
                     <TextView
                         android:id="@+id/date_fund"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Date"
+                        android:fontFamily="@font/montserrat_light"
                         android:textSize="@dimen/_14sdp"
                         android:layout_marginLeft="@dimen/_4sdp"
-                        android:textStyle="bold"
                         android:textColor="@color/white"/>
                 </LinearLayout>
                 <LinearLayout
@@ -159,16 +159,16 @@
                         android:layout_height="wrap_content"
                         android:text="Email: "
                         android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold"
+                        android:fontFamily="@font/montserrat_regular"
                         android:textColor="@color/white"/>
                     <TextView
                         android:id="@+id/email_fund"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="email"
+                        android:fontFamily="@font/montserrat_light"
                         android:textSize="@dimen/_14sdp"
                         android:layout_marginLeft="@dimen/_4sdp"
-                        android:textStyle="bold"
                         android:textColor="@color/white"/>
                 </LinearLayout>
                 <LinearLayout
@@ -182,7 +182,7 @@
                         android:layout_height="wrap_content"
                         android:text="Name: "
                         android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold"
+                        android:fontFamily="@font/montserrat_regular"
                         android:textColor="@color/white"/>
                     <TextView
                         android:id="@+id/name_fund"
@@ -191,7 +191,7 @@
                         android:text="name"
                         android:textSize="@dimen/_14sdp"
                         android:layout_marginLeft="@dimen/_4sdp"
-                        android:textStyle="bold"
+                        android:fontFamily="@font/montserrat_light"
                         android:textColor="@color/white"/>
                 </LinearLayout>
                 <LinearLayout
@@ -205,16 +205,16 @@
                         android:layout_height="wrap_content"
                         android:text="Paid Amount: "
                         android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold"
+                        android:fontFamily="@font/montserrat_regular"
                         android:textColor="@color/white"/>
                     <TextView
                         android:id="@+id/paid_amount_fund"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="amount"
+                        android:fontFamily="@font/montserrat_light"
                         android:textSize="@dimen/_14sdp"
                         android:layout_marginLeft="@dimen/_4sdp"
-                        android:textStyle="bold"
                         android:textColor="@color/white"/>
                 </LinearLayout>
 
@@ -228,8 +228,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Roll Number: "
+                        android:fontFamily="@font/montserrat_regular"
                         android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold"
                         android:textColor="@color/white"/>
                     <TextView
                         android:id="@+id/roll_number_fund"
@@ -237,8 +237,8 @@
                         android:layout_height="wrap_content"
                         android:text="roll number"
                         android:textSize="@dimen/_14sdp"
+                        android:fontFamily="@font/montserrat_light"
                         android:layout_marginLeft="@dimen/_4sdp"
-                        android:textStyle="bold"
                         android:textColor="@color/white"/>
                 </LinearLayout>
                 <LinearLayout
@@ -252,7 +252,7 @@
                         android:layout_height="wrap_content"
                         android:text="Status: "
                         android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold"
+                        android:fontFamily="@font/montserrat_regular"
                         android:textColor="@color/white"/>
                     <TextView
                         android:id="@+id/status_fund"
@@ -260,10 +260,34 @@
                         android:layout_height="wrap_content"
                         android:text="Pending"
                         android:textSize="@dimen/_14sdp"
+                        android:fontFamily="@font/montserrat_light"
                         android:layout_marginLeft="@dimen/_4sdp"
-                        android:textStyle="bold"
                         android:textColor="@color/white"/>
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginTop="@dimen/_5sdp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Message: "
+                        android:textSize="@dimen/_14sdp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:id="@+id/message_fund"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pending"
+                        android:fontFamily="@font/montserrat_light"
+                        android:textSize="@dimen/_14sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -279,6 +303,7 @@
                         android:text="View NITC ID"
                         android:layout_weight="1"
                         android:textAllCaps="false"
+                        android:fontFamily="@font/montserrat_semibold"
                         android:background="@color/teal_200"
                         android:layout_marginLeft="@dimen/_8sdp"
                         android:layout_marginRight="@dimen/_8sdp"/>
@@ -286,6 +311,7 @@
                         android:id="@+id/view_bill_fund"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_semibold"
                         android:layout_weight="1"
                         android:text="View Bill"
                         android:textAllCaps="false"

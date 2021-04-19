@@ -126,6 +126,7 @@ public class Prior_Request_G extends AppCompatActivity implements PriorGAdapter.
                 dialogInterface.cancel();
             }
         });
+
         builder.show();
     }
 }

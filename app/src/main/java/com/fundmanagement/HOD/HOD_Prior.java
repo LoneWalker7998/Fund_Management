@@ -100,6 +100,7 @@ public class HOD_Prior extends AppCompatActivity implements PriorGAdapter.Myitem
         builder = new AlertDialog.Builder(context,R.style.CustomDialog);
         builder.setTitle("Do you want to accept or reject this request?");
         builder.setMessage("Choose any one of this ");
+        builder.setCancelable(false);
         builder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
             @SuppressLint("ResourceAsColor")
             @Override
@@ -116,7 +117,6 @@ public class HOD_Prior extends AppCompatActivity implements PriorGAdapter.Myitem
                 build.setView(layout);
                 build.setTitle("Prior Id");
                 build.setMessage("Please enter unique Id");
-
                 build.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

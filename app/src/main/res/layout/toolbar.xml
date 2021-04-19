@@ -27,6 +27,7 @@
             android:layout_width="@dimen/_1sdp"
             android:layout_height="wrap_content"
             android:text="Manage Profile"
+            android:fontFamily="@font/montserrat_semibold"
             android:textSize="@dimen/_16sdp"
             android:textStyle="bold"
             android:gravity="center"
