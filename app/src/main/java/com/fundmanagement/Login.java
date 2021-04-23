@@ -42,7 +42,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.w3c.dom.Document;
 
-public class Login extends AppCompatActivity implements SignUpFragment.onSomeEventListener,LoginFragment.onSomeEventListenerLogin {
+public class Login extends AppCompatActivity implements SignUpFragment.onSomeEventListener {
 
     RadioGroup toggle;
     RadioButton signin,signUp;
@@ -127,12 +127,12 @@ public class Login extends AppCompatActivity implements SignUpFragment.onSomeEve
     }
 
 
-    @Override
-    public void someEventLogin() {
-        toggle.setVisibility(View.GONE);
-        ProgressFragment progressFragment = new ProgressFragment();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        Utils.setMyFragment(progressFragment, fragmentManager);
-
-    }
+//    @Override
+//    public void someEventLogin() {
+//        toggle.setVisibility(View.GONE);
+//        ProgressFragment progressFragment = new ProgressFragment();
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        Utils.setMyFragment(progressFragment, fragmentManager);
+//
+//    }
 }

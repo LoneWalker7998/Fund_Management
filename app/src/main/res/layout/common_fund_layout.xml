@@ -304,7 +304,7 @@
                         android:layout_weight="1"
                         android:textAllCaps="false"
                         android:fontFamily="@font/montserrat_semibold"
-                        android:background="@color/teal_200"
+
                         android:layout_marginLeft="@dimen/_8sdp"
                         android:layout_marginRight="@dimen/_8sdp"/>
                     <Button

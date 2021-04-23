@@ -14,6 +14,7 @@
         android:layout_weight="1"
         android:orientation="vertical">
         <androidx.appcompat.widget.Toolbar
+            android:layout_marginTop="@dimen/_5sdp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp">
             <LinearLayout
@@ -138,6 +139,7 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -147,18 +149,89 @@
             android:layout_height="match_parent"
             app:cardCornerRadius="@dimen/_20sdp"
              >
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:isScrollContainer="true"
+                android:background="@drawable/cardview_gradient">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:background="@drawable/cardview_gradient">
+              >
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/recyclerview"
                     android:layout_marginTop="@dimen/_10sdp">
                 </androidx.recyclerview.widget.RecyclerView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/gonecardview"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_90sdp"
+                    app:cardCornerRadius="@dimen/_20sdp"
+                    android:visibility="visible"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_20sdp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_90sdp"
+                        android:orientation="horizontal">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="@dimen/_70sdp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            app:cardCornerRadius="@dimen/_10sdp">
+                            <LinearLayout
+                                android:layout_width="@dimen/_70sdp"
+                                android:layout_height="@dimen/_70sdp"
+                                android:background="#38CA47"
+                                android:padding="@dimen/_7sdp"
+                                android:orientation="vertical">
+                                <ImageView
+                                    android:layout_width="@dimen/_50sdp"
+                                    android:layout_height="@dimen/_50sdp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_bell"
+                                   />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_7sdp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="NOTIFICATIONS"
+                                android:layout_gravity="center_vertical"
+                                android:textSize="@dimen/_14sdp"
+                                android:fontFamily="@font/montserrat_semibold"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="View Status Of Your Actions"
+                                android:layout_gravity="center_vertical"
+                                android:textSize="@dimen/_10sdp"
+                                android:fontFamily="@font/montserrat_light"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:textColor="@color/black"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
             </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
         </androidx.cardview.widget.CardView>
     </LinearLayout>
 </LinearLayout>

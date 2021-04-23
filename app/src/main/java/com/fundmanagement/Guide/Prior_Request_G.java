@@ -21,6 +21,8 @@ import com.fundmanagement.Adapters.PriorGAdapter;
 import com.fundmanagement.Model.PriorGData;
 import com.fundmanagement.R;
 import com.fundmanagement.Student.Prior_Request;
+import com.fundmanagement.Utils.CommonNotification;
+import com.fundmanagement.Utils.Utils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -91,7 +93,7 @@ public class Prior_Request_G extends AppCompatActivity implements PriorGAdapter.
     }
 
     @Override
-    public void onItemClick(String str) {
+    public void onItemClick(PriorGData data) {
         Context context = Prior_Request_G.this;
         builder = new AlertDialog.Builder(context,R.style.CustomDialog);
         builder.setTitle("Do you want to accept or reject this request?");
@@ -100,11 +102,13 @@ public class Prior_Request_G extends AppCompatActivity implements PriorGAdapter.
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                DocumentReference reference = firestore.collection("prior_request").document(str);
+                DocumentReference reference = firestore.collection("prior_request").document(data.getCollectionId());
                 reference.update("status","Approved by Guide").addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(context, "Request Approved", Toast.LENGTH_SHORT).show();
+                        CommonNotification noti = new CommonNotification("Prior request approved by Guide",data.getEmail(),getApplicationContext());
+                        noti.uploadNotification();
                         itemlist.clear();
                         refreshData();
                     }
@@ -114,10 +118,12 @@ public class Prior_Request_G extends AppCompatActivity implements PriorGAdapter.
         builder.setNegativeButton("Reject", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                DocumentReference reference = firestore.collection("prior_request").document(str);
+                DocumentReference reference = firestore.collection("prior_request").document(data.getCollectionId());
                 reference.update("status","Rejected by Guide").addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
+                        CommonNotification noti = new CommonNotification("Prior request rejected by Guide",data.getEmail(),getApplicationContext());
+                        noti.uploadNotification();
                         Toast.makeText(context, "Request Rejected", Toast.LENGTH_SHORT).show();
                         itemlist.clear();
                         refreshData();

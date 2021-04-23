@@ -173,7 +173,7 @@ public class FundDetails extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 builder.setView(layout);
-                builder.setTitle("image");
+                builder.setTitle("Image");
                 builder.setPositiveButton("", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

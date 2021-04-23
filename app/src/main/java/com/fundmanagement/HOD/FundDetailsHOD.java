@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.fundmanagement.Guide.FundDetailsGuide;
 import com.fundmanagement.R;
 import com.fundmanagement.Student.Submit_Prior;
+import com.fundmanagement.Utils.CommonNotification;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -168,6 +169,8 @@ public class FundDetailsHOD extends AppCompatActivity {
                                                 batch1.commit().addOnCompleteListener(new OnCompleteListener<Void>() {
                                                     @Override
                                                     public void onComplete(@NonNull Task<Void> task) {
+                                                        CommonNotification noti = new CommonNotification("Fund request accepted by HOD, Balance will be credited soon",email.getText().toString(),getApplicationContext());
+                                                        noti.uploadNotification();
                                                         Toast.makeText(FundDetailsHOD.this, "Balance credited to the student", Toast.LENGTH_SHORT).show();
                                                     }
                                                 });
@@ -225,6 +228,8 @@ public class FundDetailsHOD extends AppCompatActivity {
                         batch.commit().addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
+                                CommonNotification noti = new CommonNotification("Fund request rejected by HOD",email.getText().toString(),getApplicationContext());
+                                noti.uploadNotification();
                                 Toast.makeText(context, "Request Rejected", Toast.LENGTH_SHORT).show();
                                 finish();
                             }

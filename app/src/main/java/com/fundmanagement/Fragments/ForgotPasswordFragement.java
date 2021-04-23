@@ -27,22 +27,23 @@ public class ForgotPasswordFragement extends Fragment {
 
     EditText login_email;
     Button submit;
-        FirebaseAuth firebaseAuth;
-RelativeLayout relativeLayout;
+    FirebaseAuth firebaseAuth;
+    RelativeLayout relativeLayout;
     SharedPreferences sharedPreferences;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_forgot_password_fragement, container, false);
+        View view = inflater.inflate(R.layout.fragment_forgot_password_fragement, container, false);
         login_email = view.findViewById(R.id.login_email);
         submit = view.findViewById(R.id.submit);
         relativeLayout = view.findViewById(R.id.progress_bar);
         firebaseAuth = FirebaseAuth.getInstance();
         sharedPreferences = this.getActivity().getSharedPreferences("forgot", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("isforgot",true);
-         editor.apply();
+        editor.putBoolean("isforgot", true);
+        editor.apply();
 
         return view;
     }

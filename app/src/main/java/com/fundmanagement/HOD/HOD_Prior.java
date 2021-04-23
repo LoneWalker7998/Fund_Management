@@ -21,6 +21,7 @@ import com.fundmanagement.Adapters.PriorGAdapter;
 import com.fundmanagement.Guide.Prior_Request_G;
 import com.fundmanagement.Model.PriorGData;
 import com.fundmanagement.R;
+import com.fundmanagement.Utils.CommonNotification;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -94,8 +95,8 @@ public class HOD_Prior extends AppCompatActivity implements PriorGAdapter.Myitem
     }
 
     @Override
-    public void onItemClick(String str) {
-        DocumentReference ref = firestore.collection("prior_request").document(str);
+    public void onItemClick(PriorGData data) {
+        DocumentReference ref = firestore.collection("prior_request").document(data.getCollectionId());
         Context context = HOD_Prior.this;
         builder = new AlertDialog.Builder(context,R.style.CustomDialog);
         builder.setTitle("Do you want to accept or reject this request?");
@@ -126,6 +127,8 @@ public class HOD_Prior extends AppCompatActivity implements PriorGAdapter.Myitem
                         batch.commit().addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
+                                CommonNotification noti = new CommonNotification("Prior request approved by HOD",data.getEmail(),getApplicationContext());
+                                noti.uploadNotification();
                                 Toast.makeText(HOD_Prior.this, "Prior Id generated", Toast.LENGTH_SHORT).show();
                                 itemlist.clear();
                                 refreshData();
@@ -159,6 +162,8 @@ public class HOD_Prior extends AppCompatActivity implements PriorGAdapter.Myitem
                 ref.update("status","Rejected by HOD").addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
+                        CommonNotification noti = new CommonNotification("Prior request rejected by HOD",data.getEmail(),getApplicationContext());
+                        noti.uploadNotification();
                         Toast.makeText(context, "Request Rejected", Toast.LENGTH_SHORT).show();
                         itemlist.clear();
                         refreshData();

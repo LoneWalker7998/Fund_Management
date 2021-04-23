@@ -26,7 +26,7 @@ public class PriorGAdapter extends RecyclerView.Adapter<PriorGAdapter.ViewHolder
         this.listener = listener;
     }
     public interface  MyitemOnclick{
-        void onItemClick(String str);
+        void onItemClick(PriorGData data);
     }
 
     @NonNull
@@ -46,7 +46,7 @@ public class PriorGAdapter extends RecyclerView.Adapter<PriorGAdapter.ViewHolder
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.onItemClick(data.getCollectionId());
+                listener.onItemClick(data);
             }
         });
     }

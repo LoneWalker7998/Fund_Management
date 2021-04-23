@@ -9,32 +9,74 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FundManagement">
-        <activity android:name=".Student.ChnagePassword"></activity>
-        <activity android:name=".HOD.ApprovedFundsHod" />
-        <activity android:name=".HOD.FundDetailsHOD" />
-        <activity android:name=".HOD.VerifyFundRequest" />
-        <activity android:name=".ApprovedFunds" />
-        <activity android:name=".Guide.FundDetailsGuide" />
-        <activity android:name=".FundDetails" />
-        <activity android:name=".Student.ViewStatus" />
-        <activity android:name=".Dashboard" />
-        <activity android:name=".Student.UploadImage" />
-        <activity android:name=".Student.Edit_Profile" />
-        <activity android:name=".Student.Prior_Request" />
-        <activity android:name=".Student.Submit_Prior" />
-        <activity android:name=".Student.Add_Bill" />
-        <activity android:name=".Student.View_Profile" />
-        <activity android:name=".HOD.HOD_Prior" />
-        <activity android:name=".Guide.Prior_Request_G" />
-        <activity android:name=".Guide.Document_Verify" />
-        <activity
-            android:name=".Login"
+        <activity android:name=".SplashScreen"
             android:screenOrientation="locked">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".Student.Notification"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".Student.ChnagePassword"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".HOD.ApprovedFundsHod"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".HOD.FundDetailsHOD"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".HOD.VerifyFundRequest"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".ApprovedFunds"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".Guide.FundDetailsGuide"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".FundDetails"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".Student.ViewStatus"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".Dashboard"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".Student.UploadImage"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".Student.Edit_Profile"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".Student.Prior_Request"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".Student.Submit_Prior"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".Student.Add_Bill"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".Student.View_Profile"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".HOD.HOD_Prior"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".Guide.Prior_Request_G"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".Guide.Document_Verify"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".Login"
+            android:screenOrientation="locked">
         </activity>
     </application>
 

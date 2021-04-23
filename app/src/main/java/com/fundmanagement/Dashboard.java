@@ -3,6 +3,7 @@ package com.fundmanagement;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +24,7 @@ import com.fundmanagement.HOD.ApprovedFundsHod;
 import com.fundmanagement.HOD.HOD_Prior;
 import com.fundmanagement.HOD.VerifyFundRequest;
 import com.fundmanagement.Model.DashboardData;
+import com.fundmanagement.Student.Notification;
 import com.fundmanagement.Student.Prior_Request;
 import com.fundmanagement.Student.ViewStatus;
 import com.fundmanagement.Student.View_Profile;
@@ -48,6 +50,7 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
     FirebaseFirestore firestore;
     List itemlist = new ArrayList<>();
     AlertDialog.Builder builder;
+    CardView notification;
     TextView workshop,workshop_balance,seminar,seminar_balance,electronic,electronic_balance,name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +70,8 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
         electronic_balance = findViewById(R.id.electronic_balance);
         firestore = FirebaseFirestore.getInstance();
         name = findViewById(R.id.username);
+        notification = findViewById(R.id.gonecardview);
+
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -124,6 +129,7 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
             dummydata();
         }
         else if(role.equals("student")) {
+            notification.setVisibility(View.VISIBLE);
             FirebaseUser user = firebaseAuth.getCurrentUser();
             DocumentReference reference = firestore.collection("users").document(user.getUid().toString());
             reference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -174,6 +180,12 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
         recyclerView.setLayoutManager(new GridLayoutManager(Dashboard.this,2));
         recyclerView.setAdapter(adapter);
 
+        notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Dashboard.this, Notification.class));
+            }
+        });
 
     }
 

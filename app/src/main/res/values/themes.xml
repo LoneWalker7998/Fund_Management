@@ -16,11 +16,10 @@
         <item name="android:windowContentOverlay">@null</item>
         <!-- Customize your theme here. -->
     </style>
-
+    <style name="custombutton" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/teal_200</item>
+    </style>
     <style name="CustomDialog" parent="Theme.MaterialComponents.Light.Dialog.Alert">
-
-
-
 
     </style>
 
@@ -39,5 +38,9 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopLeft">@dimen/_50sdp</item>
 
+    </style>
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="height">@dimen/_10sdp</item>
+        <item name="android:windowBackground">@drawable/splash_scree_icon</item>
     </style>
 </resources>

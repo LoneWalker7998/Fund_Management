@@ -26,7 +26,10 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
+import java.text.DateFormat;
+import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -62,9 +65,19 @@ public class Submit_Prior extends AppCompatActivity {
                 DocumentReference total = firestore.collection("total").document("total_id");
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 Date date = new Date();
-                Date newDate = new Date(date.getTime() + (604800000L * 2) + (24 * 60 * 60));
-                SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-                String strDate = dt.format(newDate);
+                String pattern = "MM/dd/yyyy";
+                DateFormat df = new SimpleDateFormat(pattern);
+                Date today = Calendar.getInstance().getTime();
+                String strDate = df.format(today);
+
+//                Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+//                String strDate = formatter.format(date);
+
+
+//                Date newDate = new Date(date.getTime() + (604800000L * 2) + (24 * 60 * 60));
+//                SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+//                String strDate = dt.format(newDate);
+
                 Map<String,Object> prior = new HashMap<>();
                 prior.put("student_email",user.getEmail().toString());
                 prior.put("prior_id","null");

@@ -24,6 +24,7 @@ import com.fundmanagement.FundDetails;
 import com.fundmanagement.HOD.HOD_Prior;
 import com.fundmanagement.R;
 import com.fundmanagement.Student.Submit_Prior;
+import com.fundmanagement.Utils.CommonNotification;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -119,6 +120,8 @@ public class FundDetailsGuide extends AppCompatActivity {
                         batch.commit().addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
+                                CommonNotification noti = new CommonNotification("Document verification has been approved by Guide",email.getText().toString(),getApplicationContext());
+                                noti.uploadNotification();
                                 Toast.makeText(context, "Request Accepted", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
@@ -170,7 +173,9 @@ public class FundDetailsGuide extends AppCompatActivity {
                         batch.commit().addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-                                Toast.makeText(context, "Request Accepted", Toast.LENGTH_SHORT).show();
+                                CommonNotification noti = new CommonNotification("Document verification has been rejected by Guide",email.getText().toString(),getApplicationContext());
+                                noti.uploadNotification();
+                                Toast.makeText(context, "Request Rejected", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         });

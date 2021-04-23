@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 
 import com.fundmanagement.R;
 
-public class ProgressFragment extends Fragment implements LoginFragment.onSomeEventListenerLogin,SignUpFragment.onSomeEventListener {
+public class ProgressFragment extends Fragment  {
 
     RelativeLayout relativeLayout;
 
@@ -24,13 +24,4 @@ public class ProgressFragment extends Fragment implements LoginFragment.onSomeEv
         return view;
     }
 
-    @Override
-    public void someEventLogin() {
-        relativeLayout.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void someEvent() {
-        relativeLayout.setVisibility(View.VISIBLE);
-    }
 }

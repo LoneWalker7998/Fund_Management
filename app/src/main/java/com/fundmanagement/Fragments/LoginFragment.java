@@ -48,7 +48,7 @@ public class LoginFragment extends Fragment {
     Boolean isValidData= false;
     FirebaseFirestore firestore;
     SharedPreferences sharedPreferences;
-    RelativeLayout relativeLayout;
+//    RelativeLayout relativeLayout;
     Context context;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,7 +61,7 @@ public class LoginFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
         verify_email = view.findViewById(R.id.verify_email);
         firestore = FirebaseFirestore.getInstance();
-        relativeLayout = view.findViewById(R.id.progress_bar);
+//        relativeLayout = view.findViewById(R.id.progress_bar);
         sharedPreferences = this.getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
         context = getContext();
         builder = new AlertDialog.Builder(context,R.style.CustomDialog);
@@ -184,9 +184,9 @@ public class LoginFragment extends Fragment {
                                                 it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |  Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                                 startActivity(it);
 
-                                                relativeLayout.setVisibility(View.GONE);
+//                                                relativeLayout.setVisibility(View.GONE);
                                             }else{
-                                                relativeLayout.setVisibility(View.GONE);
+//                                                relativeLayout.setVisibility(View.GONE);
                                                 Toast.makeText(getContext(), "Verify Your Email First", Toast.LENGTH_SHORT).show();
                                                 verify_email.setVisibility(View.VISIBLE);
                                                 verify_email.setOnClickListener(new View.OnClickListener() {
@@ -196,13 +196,13 @@ public class LoginFragment extends Fragment {
                                                         firebaseUser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                                             @Override
                                                             public void onSuccess(Void aVoid) {
-                                                                relativeLayout.setVisibility(View.GONE);
+//                                                                relativeLayout.setVisibility(View.GONE);
                                                                 Toast.makeText(getContext(), "Email has been sent to your account", Toast.LENGTH_SHORT).show();
                                                             }
                                                         }).addOnFailureListener(new OnFailureListener() {
                                                             @Override
                                                             public void onFailure(@NonNull Exception e) {
-                                                                relativeLayout.setVisibility(View.GONE);
+//                                                                relativeLayout.setVisibility(View.GONE);
                                                                 Toast.makeText(getContext(), "Error "+e.getMessage(), Toast.LENGTH_SHORT).show();
                                                             }
                                                         });
@@ -214,21 +214,21 @@ public class LoginFragment extends Fragment {
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        relativeLayout.setVisibility(View.GONE);
+//                                        relativeLayout.setVisibility(View.GONE);
                                         Toast.makeText(getContext(), "Error "+e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
-                                relativeLayout.setVisibility(View.GONE);
+//                                relativeLayout.setVisibility(View.GONE);
                             }else{
                                 Toast.makeText(getContext(), "Error "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                relativeLayout.setVisibility(View.GONE);
+//                                relativeLayout.setVisibility(View.GONE);
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(getContext(), "Error "+e.getMessage(), Toast.LENGTH_SHORT).show();
-                            relativeLayout.setVisibility(View.GONE);
+//                            relativeLayout.setVisibility(View.GONE);
                         }
                     });
                 }

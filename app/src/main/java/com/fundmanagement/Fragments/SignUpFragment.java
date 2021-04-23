@@ -150,6 +150,7 @@ public class SignUpFragment extends Fragment {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if(task.isSuccessful()){
+
                                         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                                         firebaseUser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
@@ -183,7 +184,7 @@ public class SignUpFragment extends Fragment {
                                                 Toast.makeText(getContext(), "Error "+e.getMessage(), Toast.LENGTH_SHORT).show();
                                             }
                                         });
-
+                                        someEventListener.someEvent();
                                         LoginFragment loginFragment = new LoginFragment();
                                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                                         Utils.setMyFragment(loginFragment, fragmentManager);
