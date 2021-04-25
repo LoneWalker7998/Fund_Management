@@ -23,7 +23,9 @@
 
     </style>
 
-
+<style name="custome_button" parent="Theme.MaterialComponents">
+    <item name="android:colorPrimary">@color/teal_200</item>
+</style>
     <style name="RoundShapeAppearance" parent="@style/ShapeAppearance.MaterialComponents.MediumComponent">
 
         <item name="cornerFamily">rounded</item>

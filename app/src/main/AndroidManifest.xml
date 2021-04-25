@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FundManagement">
-        <activity android:name=".SplashScreen"
+        <activity android:name=".TermsCondition"></activity>
+        <activity
+            android:name=".SplashScreen"
             android:screenOrientation="locked">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -76,8 +78,7 @@
             android:screenOrientation="locked" />
         <activity
             android:name=".Login"
-            android:screenOrientation="locked">
-        </activity>
+            android:screenOrientation="locked"></activity>
     </application>
 
 </manifest>

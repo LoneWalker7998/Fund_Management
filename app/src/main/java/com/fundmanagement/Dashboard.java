@@ -245,6 +245,8 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
                 startActivity(new Intent(Dashboard.this, ViewStatus.class));
             }else if(string.equals("Manage Profile")){
                 startActivity(new Intent(Dashboard.this, View_Profile.class));
+            }else if(string.equals("T&C")){
+                startActivity(new Intent(Dashboard.this,TermsCondition.class));
             }
         }else if(role.equals("guide")){
             if(string.equals("Prior Request")){
@@ -253,6 +255,8 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
                 startActivity(new Intent(Dashboard.this, Document_Verify.class));
             }else if(string.equals("Verified Requests")){
                 startActivity(new Intent(Dashboard.this, ApprovedFunds.class));
+            }else if(string.equals("T&C")){
+                startActivity(new Intent(Dashboard.this,TermsCondition.class));
             }
         }else if(role.equals("hod")){
             if(string.equals("Prior Request")){
@@ -261,6 +265,8 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.MyI
                 startActivity(new Intent(Dashboard.this, VerifyFundRequest.class));
             }else  if(string.equals("Request History")){
                 startActivity(new Intent(Dashboard.this, ApprovedFundsHod.class));
+            }else if(string.equals("T&C")){
+                startActivity(new Intent(Dashboard.this,TermsCondition.class));
             }
         }
     }
