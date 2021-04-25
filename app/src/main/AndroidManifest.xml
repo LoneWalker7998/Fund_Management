@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FundManagement">
-        <activity android:name=".TermsCondition"></activity>
+        <activity android:name=".TermsCondition"
+            android:screenOrientation="locked"
+            />
         <activity
             android:name=".SplashScreen"
             android:screenOrientation="locked">
